@@ -1,10 +1,220 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Inventory</title>
-  </head>
-  <body>
 
-  </body>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Nav Bar Code -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="./index.html">BarterHUB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Inventory<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./profile.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./settings.html">Settings</a>
+        </li>
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="Search">Search</button>
+          </form>
+        </li>
+      </ul>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="Log In">Log In</button>
+    </div>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!-- Heading -->
+  <h1>My Inventory</h1>
+
+  <!-- Line up cards in rows of 3-4 -->
+  <div class="card-columns">
+    <div class="col-auto mb-3">
+
+      <!-- Create new card -->
+      <div class="card" style="width: 20rem;">
+        <a class="stretched-link" data-toggle="modal" data-target="#add_item"></a>
+        <img src="https://image.flaticon.com/icons/svg/16/16909.svg" class="card-img-top" alt="Add new">
+        <div class="card-body">
+          <h5 class="card-title">Add New Item</h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
+
+      <!-- Inventory Item Cards -->
+      <div class="card" style="width: 20rem;">
+        <!-- <a href="#" class="stretched-link"></a> -->
+        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+        <div class="card-body">
+          <h5 class="card-title">Item Name</h5>
+          <p class="card-text">Item Description</p>
+          <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item">Remove Item</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 20rem;">
+        <!-- <a href="#" class="stretched-link"></a> -->
+        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
+        <div class="card-body">
+          <h5 class="card-title">Item Name</h5>
+          <p class="card-text">Item Description</p>
+          <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item">Remove Item</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 20rem;">
+        <!-- <a href="#" class="stretched-link"></a> -->
+        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+        <div class="card-body">
+          <h5 class="card-title">Item Name</h5>
+          <p class="card-text">Item Description</p>
+          <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item">Remove Item</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 20rem;">
+        <!-- <a href="#" class="stretched-link"></a> -->
+        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
+        <div class="card-body">
+          <h5 class="card-title">Item Name</h5>
+          <p class="card-text">Item Description</p>
+          <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item">Remove Item</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 20rem;">
+        <!-- <a href="#" class="stretched-link"></a> -->
+        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+        <div class="card-body">
+          <h5 class="card-title">Item Name</h5>
+          <p class="card-text">Item Description</p>
+          <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item">Remove Item</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 20rem;">
+        <!-- <a href="#" class="stretched-link"></a> -->
+        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
+        <div class="card-body">
+          <h5 class="card-title">Item Name</h5>
+          <p class="card-text">Item Description</p>
+          <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item">Remove Item</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Delete Item Modal -->
+  <div class="modal" id="delete_item" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Add Item Modal -->
+  <div class="modal" id="add_item" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- Item Name -->
+          <div class="form-group">
+            <h4>Item Name</h4>
+            <input type="text" class="form-control" id="item-name" placeholder="">
+          </div>
+
+          <!-- Upload Item Image -->
+          <div class="form-group">
+            <h4>Upload Photo:</h4>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+
+          <!-- Article Text -->
+          <div class="form-group">
+            <h4>Description</h4>
+            <textarea rows="5" cols="50"></textarea>
+          </div>
+
+          <!-- Form row object part two -->
+          <div class="form-row">
+            <!-- In Line Check Boxes -->
+            <div class="form-group" id="checkboxes">
+              <h4>Select Tags</h4>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Food
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Clothes
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Furniture
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Appliances
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Arts and Crafts
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Toys
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Books/Magazines
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Technology
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Tools
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Services
+              </label>
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
 </html>
