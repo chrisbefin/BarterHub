@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Profile</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../index.html">BarterHUB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="inventory.html">Inventory<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="settings.html">Settings</a>
+        </li>
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="Search">Search</button>
+          </form>
+        </li>
+      </ul>
+      <a class="btn btn-outline-success my-2 my-sm-0" type="Log In" href="BBLogin.html">Log In</a>
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="Log In" href="BBLogin.html">Log In</button> -->
+    </div>
+  </nav>
+
+
+
+
+  <div class="container">
+		<br>
+    <div class="row">
+      <div class="col-4">
+        <div class="text-center">
+          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar">
+          <h6>Your Name</h6>
+          <!-- <input type="file" class="text-center center-block file-upload"> -->
+          <span class="heading">Rating</span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <hr style="border:3px solid #f1f1f1">
+          <ul class="list-group">
+            <li class="list-group-item">Activity <i class="fa fa-1x"></i></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Inventory</strong></span> 125</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Trades</strong></span> 13</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Views</strong></span> 37</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="card text-center">
+          <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Recently Viewed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Watching</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Suggestions</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <div class="card-deck">
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pic of Apples</h5>
+                  <p class="card-text"></p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last viewed 3 mins ago</small>
+                </div>
+              </div>
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pic of Oranges</h5>
+                  <p class="card-text"></p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last viewed 5 mins ago</small>
+                </div>
+              </div>
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pic of Dog</h5>
+                  <p class="card-text"></p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last viewed 1 day ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+       <ul class="list-group">
+          <li class="list-group-item text-muted">Inbox</li>
+          <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, I'd like to buy them apples.</a> Today</li>
+          <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Bill, is your boomerang still for sale?</a> Yesterday</li>
+          <li class="list-group-item text-right"><a href="#" class="pull-left">Hi User, buy my stuff, I live at such and such.</a> 10/13/2019</li>
+          <li class="list-group-item text-right"><a href="#" class="pull-left">It was great meeting you the other day. I'd also like to buy apples</a> 10/12/2019</li>
+          <li class="list-group-item text-right"><a href="#" class="pull-left">I've heard your apples are good. I'd like some.</a> 10/11/2019</li>
+
+        </ul>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
