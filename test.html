@@ -28,15 +28,19 @@
         measurementId: "G-BX8QCR47GR"
       };
       // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    </script>
-    <pre id='data'></pre>
-    <script>
-      var ref = firebase.database().ref("users/");
-      ref.orderByChild("name").on("child_added", function(data) {
-        console.log(data.val().name);
-      });
+      var db = firebase.InitializeApp(firebaseConfig);
+      db.analytics();
+      var docRef = db.collection("users").doc("VaWKmmcc5NnN2XiVB7Zx");
+      docRef.get().then(function(doc) {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
     </script>
   </body>
 <!-- <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
