@@ -28,9 +28,13 @@
         measurementId: "G-BX8QCR47GR"
       };
       // Initialize Firebase
-      var db = firebase.initializeApp(firebaseConfig);
-      db.analytics();
-      var docRef = db.collection("users").doc("VaWKmmcc5NnN2XiVB7Zx");
+      var app = firebase.initializeApp(firebaseConfig);
+      var db = firebase.database();
+      // app.analytics();
+      var docRef = db.ref("users/VaWKmmcc5NnN2XiVB7Zx").once('value').then(function(snapshot) {
+        var name = snapshot.val().name;
+        console.log(name);
+      });
       docRef.get().then(function(doc) {
     if (doc.exists) {
         console.log("Document data:", doc.data());
