@@ -269,6 +269,7 @@
     newCard.classList = 'card';
     // TODO: Need to pull all of these values from the database or form
     var item_id = "";
+    var card_id = "card_" + item_id;
     var item_name = "Filler name--------";
     var item_img = "image_url";
     var description = "Item description";
@@ -288,7 +289,7 @@
     // May need to add the <div class="col-auto mb-3"> to keep it in format
     // TODO: give each card a unique id!!!
     var content = `
-    <div id="card-db_id" class="card" style="width: 20rem;">
+    <div id="${card_id}" class="card" style="width: 20rem;">
       <!-- <a href="#" class="stretched-link"></a> -->
       <img src="${item_img}" class="card-img-top" alt="${item_name}">
       <div class="card-body">
@@ -305,7 +306,7 @@
 
   function removeCard()
   {
-    var elem = document.getElementById('card-db_id');
+    var elem = document.getElementById('card_');
     elem.parentNode.removeChild(elem);
     return false;
   }
