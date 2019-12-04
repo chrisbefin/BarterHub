@@ -13,15 +13,15 @@
   background-color: #e7e7e7;
   }
   .food {}
-  .technology {}
   .clothes {}
-  .appliances {}
-  .services {}
-  .food {}
-  .toys {}
-  .tools {}
   .furniture {}
+  .appliances {}
+  .arts {}
+  .toys {}
   .books {}
+  .technology {}
+  .tools {}
+  .services {}
   </style>
 </head>
 <body>
@@ -73,71 +73,6 @@
         </div>
       </div>
 
-      <!-- Inventory Item Cards -->
-      <!-- <div class="card" style="width: 20rem;">
-        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-          <br><br>
-          <span class="label food">food</span>
-          <span class="label technology">technology</span>
-          <span class="label clothes">clothes</span>
-          <span class="label appliances">appliances</span>
-        </div>
-      </div> -->
-
-      <!-- <div class="card" style="width: 20rem;">
-
-        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-
-        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-
-        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-
-        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-
-        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div> -->
-
     </div>
   </div>
 
@@ -173,23 +108,23 @@
         </button>
       </div>
       <div class="modal-body">
-        <form onsumbit="addItemToDatabase(this)">
+        <form id="add_item_form">
           <!-- Item Name -->
           <div class="form-group">
             <h4>Item Name</h4>
-            <input type="text" class="form-control" id="item_name" name="item-name" placeholder="">
+            <input type="text" class="form-control" id="item_name" name="item_name" placeholder="">
           </div>
 
           <!-- Upload Item Image -->
           <div class="form-group">
-            <h4>Upload Photo:</h4>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="exampleFormControlFile1">
+            <h4>URL to Photo:</h4>
+            <input type="text" class="form-control" id="item_url" name="item_url" placeholder="">
           </div>
 
           <!-- Article Text -->
           <div class="form-group">
             <h4>Description</h4>
-            <textarea id="inputted-description" rows="5" cols="50"></textarea>
+            <textarea id="inputted_description" rows="5" cols="50"></textarea>
           </div>
 
           <!-- Form row object part two -->
@@ -229,8 +164,8 @@
               </label>
             </div>
           </div>
-          <!-- Adding form buttons here --> <!-- Part of input button: class="btn btn-primary" -->
-          <input type="button" class="btn btn-primary" value="Create" data-dismiss="modal" onclick="addItemToDatabase(this)">
+          <!-- Adding form buttons here -->
+          <input type="button" class="btn btn-primary" value="Create" data-dismiss="modal" onclick="addItemToDatabase()">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         </form>
 

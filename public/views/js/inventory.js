@@ -1,7 +1,7 @@
 // Loads all of the user's current items
 function onLoad()
 {
-  console.log("TODO");
+  console.log("entered onLoad()");
   // TODO: load all the person's items from the database
   // Create cards for each item and append them to the webpage
   for(var i = 0; i < 5; i++)
@@ -10,11 +10,28 @@ function onLoad()
   }
 }
 // Stores all the user's new item in the database
-function addItemToDatabase(theForm)
+function addItemToDatabase()
 {
-  // TODO: Send new item to the database and add item key to user
-  alert(theForm.item_name);
-  createCard('8888', 'newItem!', 'some_img', 'not overriden', ['clothes']);
+  // Check if all input is valid
+  var form = document.getElementById("add_item_form")
+  var name = form.item_name.value;
+  var url = form.item_url.value;
+  var descrip = form.inputted_description.value;
+  var tags = [];
+  if(form.foodBox.checked) { tags.push('food'); }
+  if(form.clothesBox.checked) { tags.push('clothes'); }
+  if(form.furnitureBox.checked) { tags.push('furniture'); }
+  if(form.appliancesBox.checked) { tags.push('appliances'); }
+  if(form.artsBox.checked) { tags.push('arts'); }
+  if(form.toysBox.checked) { tags.push('toys'); }
+  if(form.booksBox.checked) { tags.push('books'); }
+  if(form.technologyBox.checked) { tags.push('technology'); }
+  if(form.toolsBox.checked) { tags.push('tools'); }
+  if(form.servicesBox.checked) { tags.push('services'); }
+  // TODO: QUERY DATABASE: create a new item and update the db
+  // TODO: get the auto-generated id and set it below, then make the card
+  var id = '1';
+  createCard(id, name, url, descrip, tags);
 }
 // Creates a new card on the webpage containing the new item
 function createCard(itemID, itemName, itemImg, itemDescrip, itemTags)
