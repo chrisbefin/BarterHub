@@ -23,13 +23,30 @@ const submitNewUsers = document.getElementById("newUsers");
 
 
 submitNewUsers.addEventListener("click", function(){
-
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var validEmail = !re.test(document.getElementById("emailAddress").value);
   
-  
-  if(document.getElementById("emailAddress").value == "" || document.getElementById("passwordFirst").value.length < 8 || document.getElementById("userName").value == ""
+  if(validEmail || document.getElementById("passwordFirst").value.length < 8 || document.getElementById("userName").value == ""
   || document.getElementById("passwordFirst").value != document.getElementById("passwordConfirm").value || document.getElementById("zipCode").value.length <5){
-    console.log("testingih");
     alert("Not Filled out Correctly");
+    if(document.getElementById("userName").value == ""){
+      alert("Enter Username");
+    }
+    if(validEmail){
+        alert("Invalid Email");
+    }
+    if(document.getElementById("passwordFirst").value.length < 8 ){
+      alert("Password is Too Short");
+    }
+    if(document.getElementById("passwordFirst").value != document.getElementById("passwordConfirm").value){
+      alert("Password Does Not Match");
+    }
+    if(document.getElementById("zipCode").value.length <5){
+      alert("Zip Code Must Be Five Digits");
+    }
+    
+    
+  
   }else{
     var emailCheck = firestore.collection("users").doc(document.getElementById("emailAddress").value);
     emailCheck.get().then(function(doc) {
@@ -46,10 +63,8 @@ submitNewUsers.addEventListener("click", function(){
           password: document.getElementById("passwordFirst").value,
           public: true,
           zipCode: document.getElementById("zipCode").value
-          
         })
-        alert("Succesfully Made New User");
-        window.location = 'BBlogin.html'
+        $("#myModal").modal();
       }
     })
   }
