@@ -39,12 +39,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="../resources/settings.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
-
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -77,41 +74,42 @@
         <button class="btn btn-outline-primary my-2 my-sm-0" type="Log In">Log In</button>
       </div>
     </nav>
-    <form id="settings_form" onsubmit="SettingsFunction(this)">
+    <form>
       <div class="container border border-dark rounded mar ">
         <h1>Settings</h1>
-        <hr class="purpleline">
+        <hr class="purpleline"></hr>
         <br>
         <h3>Change Email</h3>
         <div class="form-group rightpadding">
-          <label for="new_username">Change the email address associated with the account:</label>
-          <input type="email"  class="form-control border-primary textboxsize" id="new_email" placeholder="New Email">
+          <label>Change the email address associated with the account:</label>
+          <input type="text"  class="form-control border-primary textboxsize" id="new_email" placeholder="New Email">
         </div>
         <br>
         <h3>Change Your Password</h3>
         <div class="form-group rightpadding colspan="3" ">
           <div class="form-group">
-            <label for="old_pws">Enter Old Password:</label>
+            <label>Enter Old Password:</label>
             <input type="text" class="form-control border-primary textboxsize" id="old_password" placeholder="Old Password">
           </div>
           <div class="form-group">
-            <label for="new_pws">Enter New Password:</label>
+            <label>Enter New Password:</label>
             <input type="text" class="form-control border-primary textboxsize" id="new_password" placeholder="New Password">
           </div>
           <div class="form-group">
-            <label for="confirm_pws">ReEnter New Password:</label>
+            <label>ReEnter New Password:</label>
             <input type="text" class="form-control border-primary textboxsize" id="confirm_password" placeholder="ReEnter Password">
           </div>
         </div>
         <br>
         <h3>Change Your Location(zip)</h3>
         <div class="form-group rightpadding">
-          <label for="new_zip">Enter New Zip:</label>
+          <label>Enter New Zip:</label>
           <input type="text" class="form-control border-primary textboxsize" id="new_zip" placeholder=" New Zip Code">
         </div>
         <br>
-        <input type="Submit" class="btn btn-primary" value="Submit Changes"></input>
+        <button id="submit_changes" class="btn btn-primary" type="button">Submit Changes</button>
       </div>
+      <script type="text/javascript" src="../resources/settings.js"></script>
     </form>
   </body>
 </html>
