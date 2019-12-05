@@ -16,7 +16,9 @@ var firestore = firebase.firestore();
 const docRef = firestore.collection("inventory");
 
 // Array to hold all items that belong to the current user
-var items = [];
+// var item_keys = [];
+var items = {};
+var itemToDelete;
 
 // Stores all the user's new item in the database
 function addItemToDatabase()
@@ -62,20 +64,18 @@ function addItemToDatabase()
   });
 
   // Create the corresponding card
-  createCard(id, itemName, url, descrip, quan, tags);
+  createCard('card_' + id, itemName, url, descrip, quan, tags);
 }
 // Creates a new card on the webpage containing the new item
 function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags)
 {
   // Get all the info submitted by the modal form and create a card with all those attributes
-  // TODO: Set the card's id to something unique that matches its identity in the database
-
   var container = document.getElementById('item_card_holder');
   var newCard = document.createElement('div');
   newCard.classList = 'card';
   // TODO: Need to pull all of these values from the database or form
   var item_id = itemID;
-  var card_id = "card_" + item_id;
+  var card_id = item_id;
   var item_name = itemName;
   var item_img = itemImg;
   var description = itemDescrip;
@@ -93,7 +93,6 @@ function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTa
   }
 
   // May need to add the <div class="col-auto mb-3"> to keep it in format
-  // TODO: give each card a unique id!!!
   var content = `
   <div id="${card_id}" class="card" style="width: 20rem;">
     <img src="${item_img}" class="card-img-top" alt="${item_name}">
@@ -101,7 +100,7 @@ function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTa
       <h5 class="card-title">${item_name}</h5>
       <p class="card-text"><b>Quantity: </b>${itemQuantity}</p>
       <p class="card-text">${description}</p>
-      <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
+      <input type="button" data-id="${card_id}" class="open-delete_item btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
       ${tag_content}
     </div>
   </div>
@@ -110,42 +109,55 @@ function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTa
   container.innerHTML += content;
 }
 
+// Handler that deals with remove item calls
+$(document).on("click", ".open-delete_item", function () {
+     itemToDelete = $(this).data('id');
+});
+
 function removeCard()
 {
-  var elem = document.getElementById('card_12345');
+  var elem = document.getElementById(itemToDelete);
   elem.parentNode.removeChild(elem);
   return false;
 }
 
 function removeItemFromDatabase()
 {
-
+  // TODO: need to finish!!!!!
+  docRef.doc(itemToDelete).delete().then(function() {
+      console.log("Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
+  removeCard();
 }
 
 getRealTimeUpdates = function(callback){
   docRef.onSnapshot(function (querySnapshot){
       querySnapshot.forEach(function(doc) {
-          items.push(doc.data());
+          items[doc.id] = doc.data();
       });
       callback(items);
   });
 }
 
 function onLoad(items) {
+  // TODO: Need to check for the user!
   var item_keys = Object.keys(items);
+
   for (i = 0; i < item_keys.length; i++) {
     var itemID = item_keys[i];
-    var itemName = items[i]['name'];
-    var itemImg = items[i]['image'];
+    var itemName = items[itemID]['name'];
+    var itemImg = items[itemID]['image'];
     var itemDescrip;
-    if (items[i]['description'].length > 20){
-      itemDescrip = items[i]['description'].substring(0, 30);
+    if (items[itemID]['description'].length > 20){
+      itemDescrip = items[itemID]['description'].substring(0, 30);
     }
     else {
-      itemDescrip = items[i]['description'];
+      itemDescrip = items[itemID]['description'];
     }
-    var itemQuantity = items[i]['quantity'];
-    var itemTags = items[i]['tags'];
+    var itemQuantity = items[itemID]['quantity'];
+    var itemTags = items[itemID]['tags'];
     createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags);
   }
 }
