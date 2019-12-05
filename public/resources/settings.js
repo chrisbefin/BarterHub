@@ -25,19 +25,15 @@ var firestore = firebase.firestore();
 
  submit_changes.addEventListener("click", function(){
    var docUpdate = firestore.collection("users").doc("VNHuSz5sqhgDeXcusL6a");
-   var a = new_email.value;
-   var b = confirm_password.value;
-   var c = new_zip.value;
-   console.log(docUpdate);
    docUpdate.update({
-     email: a,
-     password: b,
-     zipcode: c
+     email: new_email.value,
+     password: confirm_password.value,
+     zipcode: new_zip.value
    }).then(function(){
-     alert("That shit worked");
+     alert("Information has been successfully updated");
      console.log(docUpdate);
    }).catch(function (error){
-     alert("Nope. Didn't work.");
+     alert("Could not update Information");
      console.log('here');
    });
  })
