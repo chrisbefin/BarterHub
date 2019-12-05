@@ -46,7 +46,8 @@ const itemDescription = "description";
 // the next four are just the buttons and the text field that updates
 // whenever a change happens in our database (it is displayed on the webpage)
 // const submitButton = document.querySelector("#submitButton");
-// const pullDataButton = document.querySelector("#pullDataButton");
+const pullDataButton = document.getElementById("searchButton");
+const searchInput = document.getElementById("search").value;
 // const updateDataButton = document.querySelector("#updateDataButton");
 // const nameOutput = document.querySelector("#nameOutput");
 // const imageOutput = document.getElementById("userImage");
@@ -95,20 +96,114 @@ const itemDescription = "description";
 //   });
 // })
 
-// this function will pull data from the database automatically everytime something
-// changes in the database
-getRealTimeUpdates = function(){
-  docRef.onSnapshot(function (snapshot){
-    if (snapshot && snapshot.exists){
-      const myData = snapshot.data();
-      console.log(myData);
+var items = [];
+var searchedItems = []
+
+//
+// pullDataButton.addEventListener("click", function(){
+//   docRef.get().then(function (snapshot){
+//     if (snapshot && snapshot.exists){
+//       const myData = snapshot.data();
+//       console.log(myData[userName]);
+//     }
+//   }).catch(function (error) {
+//     console.log("Got an error");
+//   });
+// })
+
+
+pullDataButton.addEventListener("click", function(){
+  // docRef.where("description", "array-contains-any", ["description", "hello"] ).onSnapshot(function (querySnapshot){
+  console.log(searchInput)
+  docRef.where("tags", "array-contains-any", [searchInput] ).onSnapshot(function (querySnapshot){
+      querySnapshot.forEach(function(doc) {
+          searchedItems.push(doc.data());
+      });
       // nameOutput.innerText = myData[userName];
       // imageOutput.src = myData[userImage]
+      // console.log("Current items: ", items.join(", "));
+      populateSearchedItems(searchedItems);
+  });
+})
+
+// // Working pull data function
+// pullDataButton.addEventListener("click", function(){
+//   // docRef.where("description", "array-contains-any", ["description", "hello"] ).onSnapshot(function (querySnapshot){
+//   docRef.where("description", "==", "test4" ).onSnapshot(function (querySnapshot){
+//       querySnapshot.forEach(function(doc) {
+//           searchedItems.push(doc.data());
+//       });
+//       // nameOutput.innerText = myData[userName];
+//       // imageOutput.src = myData[userImage]
+//       // console.log("Current items: ", items.join(", "));
+//       populateSearchedItems(searchedItems);
+//   });
+// })
+
+function populateSearchedItems(items) {
+  console.log("Populate function")
+  console.log(items.length)
+  for (i = 0; i < items.length; i++) {
+    console.log('here')
+    // console.log(items[i]['description']);
+    var image = 'img' + i.toString()
+    var name = 'name' + i.toString()
+    var description = 'description' + i.toString();
+    document.getElementById(image).src = items[i]['image'];
+    // console.log(items[i]['image']);
+    if (items[i]['description'].length > 20){
+      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 30);
     }
-  })
+    else {
+      document.getElementById(description).innerHTML = items[i]['description'];
+    }
+    document.getElementById(name).innerHTML = items[i]['name'];
+  }
 }
+
+// this function will pull data from the database automatically everytime something
+// changes in the database
+getRealTimeUpdates = function(callback){
+  docRef.onSnapshot(function (querySnapshot){
+      querySnapshot.forEach(function(doc) {
+          items.push(doc.data());
+          // console.log(doc.data())
+          // console.log(items[0]['description'])
+      });
+      // nameOutput.innerText = myData[userName];
+      // imageOutput.src = myData[userImage]
+      // console.log("Current items: ", items.join(", "));
+      callback(items);
+  });
+}
+
+function helperFunction(items) {
+  for (i = 0; i < items.length; i++) {
+    // console.log(items[i]['description']);
+    var image = 'img' + i.toString()
+    var name = 'name' + i.toString()
+    var description = 'description' + i.toString();
+    document.getElementById(image).src = items[i]['image'];
+    // console.log(items[i]['image']);
+    if (items[i]['description'].length > 20){
+      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 30);
+    }
+    else {
+      document.getElementById(description).innerHTML = items[i]['description'];
+    }
+    document.getElementById(name).innerHTML = items[i]['name'];
+  }
+}
+
+
+// getRealTimeUpdates(helperFunction);
+getRealTimeUpdates(helperFunction);
+
+
+
 // we must call the function here, otherwise it won't work
-getRealTimeUpdates();
+// getRealTimeUpdates();
+// helperFunction(items);
 
 
 

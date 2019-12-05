@@ -10,17 +10,17 @@
     <title>Welcome to Firebase Hosting</title>
 
     <!-- BE SURE TO KEEP THIS UPDATED!!! Had errors in loading bc version was 7.3.0 -->
-    <script defer src="/__/firebase/7.4.0/firebase-app.js"></script>
+    <!-- <script defer src="/__/firebase/7.4.0/firebase-app.js"></script> -->
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.4.0/firebase-auth.js"></script>
+    <!-- <script defer src="/__/firebase/7.4.0/firebase-auth.js"></script>
     <script defer src="/__/firebase/7.4.0/firebase-database.js"></script>
     <script defer src="/__/firebase/7.4.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.4.0/firebase-storage.js"></script>
+    <script defer src="/__/firebase/7.4.0/firebase-storage.js"></script> -->
 
     <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+    <!-- <script defer src="/__/firebase/init.js"></script> -->
 
   </head>
   <body>
@@ -43,17 +43,17 @@
           </li>
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="Search">Search</button>
+              <input id=search class="form-control mr-sm-2" type="search" placeholder="Search Tags" aria-label="Search">
+              <button id=searchButton class="btn btn-outline-success my-2 my-sm-0" type='button'>Search</button>
             </form>
           </li>
         </ul>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="Log In">Log In</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="Log In" href="views/BBlogin.html">Log In</button>
       </div>
     </nav>
     <div class="container-fluid">
       <div class="row">
-          <span class="pt-3 border">
+          <!-- <span class="pt-3 border">
             <div class="col">
               <ul class="nav flex-column">
                 <h3 class="font-weight-light">Tags:</h3>
@@ -113,62 +113,62 @@
                 </li>
               </ul>
             </div>
-          </span>
+          </span> -->
         <div class="col">
             <h3 class="font-weight-light">Recently Added Items</h3>
             <div class="card-columns">
                 <div class="col-auto mb-3">
                   <!-- Inventory Item Cards -->
-                  <div class="card" style="width: 16rem;">
-                    <img id=img1 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+                  <div id=card0 class="card" style="width: 16rem;">
+                    <img id=img0 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
+                    <div class="card-body">
+                      <h5 id=name0 class="card-title">Item Name</h5>
+                      <p id=description0 class="card-text">Item Description</p>
+                    </div>
+                  </div>
+
+                  <div id=card1 class="card" style="width: 16rem;">
+                    <!-- <a href="#" class="stretched-link"></a> -->
+                    <img id=img1 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
                       <h5 id=name1 class="card-title">Item Name</h5>
                       <p id=description1 class="card-text">Item Description</p>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
+                  <div id=card2 class="card" style="width: 16rem;">
                     <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img2 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
+                    <img id=img2 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
                       <h5 id=name2 class="card-title">Item Name</h5>
                       <p id=description2 class="card-text">Item Description</p>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
+                  <div id=card3 class="card" style="width: 16rem;">
                     <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img3 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+                    <img id=img3 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
                       <h5 id=name3 class="card-title">Item Name</h5>
                       <p id=description3 class="card-text">Item Description</p>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
+                  <div id=card4 class="card" style="width: 16rem;">
                     <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img4 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
+                    <img id=img4 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
                       <h5 id=name4 class="card-title">Item Name</h5>
                       <p id=description4 class="card-text">Item Description</p>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
+                  <div id=card5 class="card" style="width: 16rem;">
                     <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img5 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+                    <img id=img5 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
                       <h5 id=name5 class="card-title">Item Name</h5>
                       <p id=description5 class="card-text">Item Description</p>
-                    </div>
-                  </div>
-
-                  <div class="card" style="width: 16rem;">
-                    <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img6 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
-                    <div class="card-body">
-                      <h5 id=name6 class="card-title">Item Name</h5>
-                      <p id=description6 class="card-text">Item Description</p>
                     </div>
                   </div>
                 </div>
@@ -213,5 +213,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./resources/storefront.js"></script>
   </body>
 </html>
