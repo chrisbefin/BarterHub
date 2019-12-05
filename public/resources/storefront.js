@@ -141,7 +141,11 @@ pullDataButton.addEventListener("click", function(){
 // })
 
 function populateSearchedItems(items) {
-  for (i = 0; i < items.length; i++) {
+  var length = items.length;
+  if (items.length > 6) {
+    length = 6;
+  }
+  for (i = 0; i < length; i++) {
     console.log('here')
     // console.log(items[i]['description']);
     var email = 'email' + i.toString();
@@ -195,6 +199,10 @@ getRealTimeUpdates = function(callback){
 }
 
 function helperFunction(items) {
+  var length = items.length;
+  if (items.length > 6) {
+    length = 6;
+  }
   for (i = 0; i < items.length; i++) {
     var email = 'email' + i.toString();
     var image = 'img' + i.toString();
