@@ -13,17 +13,11 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
-// Loads all of the user's current items
-function onLoad()
-{
-  console.log("entered onLoad()");
-  // TODO: load all the person's items from the database
-  // Create cards for each item and append them to the webpage
-  for(var i = 0; i < 5; i++)
-  {
-    createCard('12345', 'gift!', 'some_img', 'a present for you', 3, ['food', 'technology']);
-  }
-}
+const docRef = firestore.collection("inventory");
+
+// Array to hold all items that belong to the current user
+var items = [];
+
 // Stores all the user's new item in the database
 function addItemToDatabase()
 {
@@ -50,7 +44,6 @@ function addItemToDatabase()
   if(form.toolsBox.checked) { item_tags.push('tools'); }
   if(form.servicesBox.checked) { item_tags.push('services'); }
 
-  // TODO: QUERY DATABASE: create a new item and update the db
   // Add a new document in collection "inventory"
   firestore.collection("inventory").doc('card_' + id.toString()).set({
       date_posted: firebase.firestore.Timestamp.now(),
@@ -128,3 +121,34 @@ function removeItemFromDatabase()
 {
 
 }
+
+getRealTimeUpdates = function(callback){
+  docRef.onSnapshot(function (querySnapshot){
+      querySnapshot.forEach(function(doc) {
+          items.push(doc.data());
+      });
+      callback(items);
+  });
+}
+
+function onLoad(items) {
+  var item_keys = Object.keys(items);
+  for (i = 0; i < item_keys.length; i++) {
+    var itemID = item_keys[i];
+    var itemName = items[i]['name'];
+    var itemImg = items[i]['image'];
+    var itemDescrip;
+    if (items[i]['description'].length > 20){
+      itemDescrip = items[i]['description'].substring(0, 30);
+    }
+    else {
+      itemDescrip = items[i]['description'];
+    }
+    var itemQuantity = items[i]['quantity'];
+    var itemTags = items[i]['tags'];
+    createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags);
+  }
+}
+
+
+getRealTimeUpdates(onLoad);
