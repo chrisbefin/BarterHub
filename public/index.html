@@ -51,130 +51,91 @@
         <a class="btn btn-outline-primary my-2 my-sm-0" type="Log In" href="views/BBLogin.html">Log In</a>
       </div>
     </nav>
+
+    <div id="modal0" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="title0" class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="fullDescription0">Modal body text goes here.</p>
+            <img id="modalimg0" src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
+          </div>
+          <div class="modal-footer">
+            <a id="modalEmail0" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container-fluid">
       <div class="row">
-          <!-- <span class="pt-3 border">
-            <div class="col">
-              <ul class="nav flex-column">
-                <h3 class="font-weight-light">Tags:</h3>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="foodCheck">
-                    <label class="form-check-label" for="foodCheck">Food</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="technologyCheck">
-                    <label class="form-check-label" for="technologyCheck">Technology</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="clothesCheck">
-                    <label class="form-check-label" for="clothesCheck">Clothes</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="appliancesCheck">
-                    <label class="form-check-label" for="appliancesCheck">Appliances</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="servicesCheck">
-                    <label class="form-check-label" for="servicesCheck">Services</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="toysCheck">
-                    <label class="form-check-label" for="toysCheck">Toys</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="toolsCheck">
-                    <label class="form-check-label" for="toolsCheck">Tools</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="furnitureCheck">
-                    <label class="form-check-label" for="furnitureCheck">Furniture</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="booksCheck">
-                    <label class="form-check-label" for="booksCheck">Books</label>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </span> -->
         <div class="col">
             <h3 class="font-weight-light">Recently Added Items</h3>
             <div class="card-columns">
                 <div class="col-auto mb-3">
                   <!-- Inventory Item Cards -->
-                  <div id=card0 class="card" style="width: 16rem;" hidden>
-                    <img id=img0 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
+                  <div id="card0" class="card" style="width: 16rem;" hidden>
+                    <img id="img0" src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 id=name0 class="card-title">Item Name</h5>
-                      <p id=description0 class="card-text">Item Description</p>
-                      <a id=email0 class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <h5 id="name0" class="card-title">Item Name</h5>
+                      <p id="description0" class="card-text">Item Description</p>
+                      <a id="email0" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal0">Details</button>
                     </div>
                   </div>
 
-                  <div id=card1 class="card" style="width: 16rem;" hidden>
-                    <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img1 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
+                  <div id="card1" class="card" style="width: 16rem;" hidden>
+                    <img id="img1" src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 id=name1 class="card-title">Item Name</h5>
-                      <p id=description1 class="card-text">Item Description</p>
-                      <a id=email1 class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <h5 id="name1" class="card-title">Item Name</h5>
+                      <p id="description1" class="card-text">Item Description</p>
+                      <a id="email1" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal1">Details</button>
                     </div>
                   </div>
 
-                  <div id=card2 class="card" style="width: 16rem;" hidden>
+                  <div id="card2" class="card" style="width: 16rem;" hidden>
                     <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img2 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
+                    <img id="img2" src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 id=name2 class="card-title">Item Name</h5>
-                      <p id=description2 class="card-text">Item Description</p>
-                      <a id=email2 class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <h5 id="name2" class="card-title">Item Name</h5>
+                      <p id="description2" class="card-text">Item Description</p>
+                      <a id="email2" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
                     </div>
                   </div>
 
-                  <div id=card3 class="card" style="width: 16rem;" hidden>
+                  <div id="card3" class="card" style="width: 16rem;" hidden>
                     <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img3 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
+                    <img id="img3" src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 id=name3 class="card-title">Item Name</h5>
-                      <p id=description3 class="card-text">Item Description</p>
-                      <a id=email3 class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <h5 id="name3" class="card-title">Item Name</h5>
+                      <p id="description3" class="card-text">Item Description</p>
+                      <a id="email3" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
                     </div>
                   </div>
 
-                  <div id=card4 class="card" style="width: 16rem;" hidden>
+                  <div id="card4" class="card" style="width: 16rem;" hidden>
                     <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img4 src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
+                    <img id="img4" src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 id=name4 class="card-title">Item Name</h5>
-                      <p id=description4 class="card-text">Item Description</p>
-                      <a id=email4 class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <h5 id="name4" class="card-title">Item Name</h5>
+                      <p id="description4" class="card-text">Item Description</p>
+                      <a id="email4" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
                     </div>
                   </div>
 
-                  <div id=card5 class="card" style="width: 16rem;" hidden>
+                  <div id="card5" class="card" style="width: 16rem;" hidden>
                     <!-- <a href="#" class="stretched-link"></a> -->
-                    <img id=img5 src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
+                    <img id="img5" src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 id=name5 class="card-title">Item Name</h5>
-                      <p id=description5 class="card-text">Item Description</p>
-                      <a id=email5 class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <h5 id="name5" class="card-title">Item Name</h5>
+                      <p id="description5" class="card-text">Item Description</p>
+                      <a id="email5" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
                     </div>
                   </div>
                 </div>

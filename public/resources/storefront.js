@@ -151,12 +151,13 @@ function populateSearchedItems(items) {
     var name = 'name' + i.toString()
     var description = 'description' + i.toString();
     var card = 'card' + i.toString();
+
     document.getElementById(card).hidden = false;
     document.getElementById(email).href = 'MAILTO:' + items[i]['email'];
     document.getElementById(image).src = items[i]['image'];
     // console.log(items[i]['image']);
     if (items[i]['description'].length > 20){
-      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 30);
+      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 20);
     }
     else {
       document.getElementById(description).innerHTML = items[i]['description'];
@@ -199,7 +200,7 @@ function helperFunction(items) {
     document.getElementById(image).src = items[i]['image'];
     // console.log(items[i]['image']);
     if (items[i]['description'].length > 20){
-      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 30);
+      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 20);
     }
     else {
       document.getElementById(description).innerHTML = items[i]['description'];
