@@ -165,6 +165,7 @@ function populateSearchedItems(items) {
     var card = 'card' + i.toString();
     document.getElementById(card).hidden = true;
   }
+  searchedItems = [];
 }
 
 // this function will pull data from the database automatically everytime something
