@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <meta charset="utf-8">
     <style>
       hr.purpleline {
         border: 1px solid #007bff;
@@ -37,6 +38,14 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../resources/settings.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Setting</title>
@@ -68,7 +77,7 @@
         <button class="btn btn-outline-primary my-2 my-sm-0" type="Log In">Log In</button>
       </div>
     </nav>
-    <form>
+    <form id="settings_form" onsubmit="SettingsFunction(this)">
       <div class="container border border-dark rounded mar ">
         <h1>Settings</h1>
         <hr class="purpleline">
@@ -101,7 +110,7 @@
           <input type="text" class="form-control border-primary textboxsize" id="new_zip" placeholder=" New Zip Code">
         </div>
         <br>
-        <button type="button" id="submit_button" class="btn btn-primary">Submit Changes</button>
+        <input type="Submit" class="btn btn-primary" value="Submit Changes"></input>
       </div>
     </form>
   </body>
