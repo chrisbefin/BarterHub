@@ -15,22 +15,23 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
 const docRef = firestore.collection("users");
+//const docRef = firestore.doc("testDataCollection/VNkMLN5lRwvHQdnZNz29");
 
-const submitNewUsers = document.querySelector("#submitNewUsers");
+const submitNewUsers = document.getElementById("newUsers");
+
 
 submitNewUsers.addEventListener("click", function(){
-  const inputTestString = inputTextField.value;
-  docRef.doc("testing").set({
-    email: emailAddress,
+  console.log("connect?");
+  docRef.doc(document.getElementById("userName").value).set({
+    email: document.getElementById("emailAddress").value,
     imageUser: "",
-    inventoryArray: inventory/l4Z2jKxFcm5w3g7fOZFu,
     inventoryCount: 1,
-    name: "blah",
+    name: document.getElementById("userName").value,
     numFollowers: 0,
     numTrades: 0,
-    password: passwordFirst,
+    password: document.getElementById("passwordFirst").value,
     public: true,
-    zipCode: zipCode
+    zipCode: document.getElementById("zipCode").value
     
   }).then(function(){
     console.log("That shit worked");
@@ -39,15 +40,15 @@ submitNewUsers.addEventListener("click", function(){
   });
 })
 
-getRealTimeUpdates = function(){
-  docRef.onSnapshot(function (snapshot){
-    if (snapshot && snapshot.exists){
-      const myData = snapshot.data();
-      console.log(myData.queriedData);
-      dataOutput.innerText = "Data Output: " + myData[dataToPull];
-    }
-  })
-}
+// getRealTimeUpdates = function(){
+//   docRef.onSnapshot(function (snapshot){
+//     if (snapshot && snapshot.exists){
+//       const myData = snapshot.data();
+//       console.log(myData.queriedData);
+//       dataOutput.innerText = "Data Output: " + myData[dataToPull];
+//     }
+//   })
+// }
 
 // we must call the function here, otherwise it won't work
-getRealTimeUpdates();
+//getRealTimeUpdates();
