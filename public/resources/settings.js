@@ -8,18 +8,17 @@ var firebaseConfig = {
   appId: "1:1040823246711:web:7e8041584d5cd2fd7a0b72",
   measurementId: "G-ZD27G0MVXH"
 };
-
+// Initialize Firebase (this is standard, don't change these two lines)
 firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
-const submitButton = document.getElementById('settings_form');
+//const submitButton = document.getElementById('settings_form');
 
 function SettingsFunction(form){
-  alert(form.new_email.value);
-  var docupdate = firestore.collection("users").doc("VNHuSz5sqhgDeXcusL6a");
+  var docUpdate = firestore.collection("users").doc("VNHuSz5sqhgDeXcusL6a");
   docUpdate.update({
-    "email": form.new_email.value,
-    "password": form.confirm_password.value,
-    "zipcode": form.new_zip.value
+    email: form.new_email.value,
+    password: form.confirm_password.value,
+    zipcode: form.new_zip.value
   });
 };
