@@ -146,11 +146,13 @@ function populateSearchedItems(items) {
   for (i = 0; i < items.length; i++) {
     console.log('here')
     // console.log(items[i]['description']);
+    var email = 'email' + i.toString();
     var image = 'img' + i.toString()
     var name = 'name' + i.toString()
     var description = 'description' + i.toString();
     var card = 'card' + i.toString();
     document.getElementById(card).hidden = false;
+    document.getElementById(email).href = 'MAILTO:' + items[i]['email'];
     document.getElementById(image).src = items[i]['image'];
     // console.log(items[i]['image']);
     if (items[i]['description'].length > 20){
@@ -187,11 +189,13 @@ getRealTimeUpdates = function(callback){
 function helperFunction(items) {
   for (i = 0; i < items.length; i++) {
     // console.log(items[i]['description']);
+    var email = 'email' + i.toString();
     var image = 'img' + i.toString();
     var name = 'name' + i.toString();
     var description = 'description' + i.toString();
     var card = 'card' + i.toString();
     document.getElementById(card).hidden = false;
+    document.getElementById(email).href = 'MAILTO:' + items[i]['email'];
     document.getElementById(image).src = items[i]['image'];
     // console.log(items[i]['image']);
     if (items[i]['description'].length > 20){
