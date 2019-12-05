@@ -47,7 +47,7 @@ const itemDescription = "description";
 // whenever a change happens in our database (it is displayed on the webpage)
 // const submitButton = document.querySelector("#submitButton");
 const pullDataButton = document.getElementById("searchButton");
-const searchInput = document.getElementById("search").value;
+const searchInput = $('#search').val();
 // const updateDataButton = document.querySelector("#updateDataButton");
 // const nameOutput = document.querySelector("#nameOutput");
 // const imageOutput = document.getElementById("userImage");
@@ -111,17 +111,17 @@ var searchedItems = []
 //   });
 // })
 
-
 pullDataButton.addEventListener("click", function(){
   // docRef.where("description", "array-contains-any", ["description", "hello"] ).onSnapshot(function (querySnapshot){
-  console.log(searchInput)
-  docRef.where("tags", "array-contains-any", [searchInput] ).onSnapshot(function (querySnapshot){
+  console.log($('#search').val());
+  docRef.where("tags", "array-contains-any", [$('#search').val()] ).onSnapshot(function (querySnapshot){
       querySnapshot.forEach(function(doc) {
           searchedItems.push(doc.data());
       });
       // nameOutput.innerText = myData[userName];
       // imageOutput.src = myData[userImage]
       // console.log("Current items: ", items.join(", "));
+      console.log(searchedItems.length);
       populateSearchedItems(searchedItems);
   });
 })
