@@ -6,17 +6,25 @@ function onLoad()
   // Create cards for each item and append them to the webpage
   for(var i = 0; i < 5; i++)
   {
-    createCard('12345', 'gift!', 'some_img', 'a present for you', ['food', 'technology']);
+    createCard('12345', 'gift!', 'some_img', 'a present for you', 3, ['food', 'technology']);
   }
 }
 // Stores all the user's new item in the database
 function addItemToDatabase()
 {
-  // Check if all input is valid
+  // Get all the data from the form
   var form = document.getElementById("add_item_form")
   var name = form.item_name.value;
   var url = form.item_url.value;
   var descrip = form.inputted_description.value;
+  var quantity = form.item_quantity.value;
+
+  // Generate date posted
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var date_posted = date+' '+time;
+
   var tags = [];
   if(form.foodBox.checked) { tags.push('food'); }
   if(form.clothesBox.checked) { tags.push('clothes'); }
@@ -28,13 +36,17 @@ function addItemToDatabase()
   if(form.technologyBox.checked) { tags.push('technology'); }
   if(form.toolsBox.checked) { tags.push('tools'); }
   if(form.servicesBox.checked) { tags.push('services'); }
+  
   // TODO: QUERY DATABASE: create a new item and update the db
+
+
+
   // TODO: get the auto-generated id and set it below, then make the card
-  var id = '1';
-  createCard(id, name, url, descrip, tags);
+  var id = '12345';
+  createCard(id, name, url, descrip, quantity, tags);
 }
 // Creates a new card on the webpage containing the new item
-function createCard(itemID, itemName, itemImg, itemDescrip, itemTags)
+function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags)
 {
   // Get all the info submitted by the modal form and create a card with all those attributes
   // TODO: Set the card's id to something unique that matches its identity in the database
@@ -68,6 +80,7 @@ function createCard(itemID, itemName, itemImg, itemDescrip, itemTags)
     <img src="${item_img}" class="card-img-top" alt="${item_name}">
     <div class="card-body">
       <h5 class="card-title">${item_name}</h5>
+      <p class="card-text"><b>Quantity: </b>${itemQuantity}</p>
       <p class="card-text">${description}</p>
       <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
       ${tag_content}
@@ -80,7 +93,7 @@ function createCard(itemID, itemName, itemImg, itemDescrip, itemTags)
 
 function removeCard()
 {
-  var elem = document.getElementById('card_');
+  var elem = document.getElementById('card_12345');
   elem.parentNode.removeChild(elem);
   return false;
 }
