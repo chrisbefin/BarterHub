@@ -20,24 +20,39 @@ const docRef = firestore.collection("users");
 const submitNewUsers = document.getElementById("newUsers");
 
 
+
+
 submitNewUsers.addEventListener("click", function(){
-  console.log("connect?");
-  docRef.doc(document.getElementById("userName").value).set({
-    email: document.getElementById("emailAddress").value,
-    imageUser: "",
-    inventoryCount: 1,
-    name: document.getElementById("userName").value,
-    numFollowers: 0,
-    numTrades: 0,
-    password: document.getElementById("passwordFirst").value,
-    public: true,
-    zipCode: document.getElementById("zipCode").value
-    
-  }).then(function(){
-    console.log("That shit worked");
-  }).catch(function (error){
-    console.log("Nope. Didn't work.");
-  });
+
+  
+  
+  if(document.getElementById("emailAddress").value == "" || document.getElementById("passwordFirst").value.length < 8 || document.getElementById("userName").value == ""
+  || document.getElementById("passwordFirst").value != document.getElementById("passwordConfirm").value || document.getElementById("zipCode").value.length <5){
+    console.log("testingih");
+    alert("Not Filled out Correctly");
+  }else{
+    var emailCheck = firestore.collection("users").doc(document.getElementById("emailAddress").value);
+    emailCheck.get().then(function(doc) {
+      if (doc.exists) {
+        alert("Please Choose Different Email");
+      } else {
+        docRef.doc(document.getElementById("emailAddress").value).set({
+          email: document.getElementById("emailAddress").value,
+          imageUser: "",
+          inventoryCount: 0,
+          name: document.getElementById("userName").value,
+          numFollowers: 0,
+          numTrades: 0,
+          password: document.getElementById("passwordFirst").value,
+          public: true,
+          zipCode: document.getElementById("zipCode").value
+          
+        })
+        alert("Succesfully Made New User");
+        window.location = 'BBlogin.html'
+      }
+    })
+  }
 })
 
 // getRealTimeUpdates = function(){
