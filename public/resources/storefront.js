@@ -149,6 +149,8 @@ function populateSearchedItems(items) {
     var image = 'img' + i.toString()
     var name = 'name' + i.toString()
     var description = 'description' + i.toString();
+    var card = 'card' + i.toString();
+    document.getElementById(card).hidden = false;
     document.getElementById(image).src = items[i]['image'];
     // console.log(items[i]['image']);
     if (items[i]['description'].length > 20){
@@ -187,6 +189,8 @@ function helperFunction(items) {
     var image = 'img' + i.toString();
     var name = 'name' + i.toString();
     var description = 'description' + i.toString();
+    var card = 'card' + i.toString();
+    document.getElementById(card).hidden = false;
     document.getElementById(image).src = items[i]['image'];
     // console.log(items[i]['image']);
     if (items[i]['description'].length > 20){
