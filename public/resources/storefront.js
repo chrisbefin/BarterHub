@@ -141,8 +141,6 @@ pullDataButton.addEventListener("click", function(){
 // })
 
 function populateSearchedItems(items) {
-  console.log("Populate function")
-  console.log(items.length)
   for (i = 0; i < items.length; i++) {
     console.log('here')
     // console.log(items[i]['description']);
@@ -163,6 +161,15 @@ function populateSearchedItems(items) {
       document.getElementById(description).innerHTML = items[i]['description'];
     }
     document.getElementById(name).innerHTML = items[i]['name'];
+
+    var modalEmail = 'modalEmail' + i.toString();
+    var title = 'title' + i.toString();
+    var modalimg = 'modalimg' + i.toString();
+    var fullDescription = 'fullDescription' + i.toString();
+    document.getElementById(title).innerHTML = items[i]['name'];
+    document.getElementById(fullDescription).innerHTML = items[i]['description'];
+    document.getElementById(modalimg).src = items[i]['image'];
+    document.getElementById(modalEmail).href = 'MAILTO:' + items[i]['email'];
   }
   for (i = 5; i > items.length-1; i--) {
     var card = 'card' + i.toString();
@@ -189,7 +196,6 @@ getRealTimeUpdates = function(callback){
 
 function helperFunction(items) {
   for (i = 0; i < items.length; i++) {
-    // console.log(items[i]['description']);
     var email = 'email' + i.toString();
     var image = 'img' + i.toString();
     var name = 'name' + i.toString();
@@ -198,7 +204,6 @@ function helperFunction(items) {
     document.getElementById(card).hidden = false;
     document.getElementById(email).href = 'MAILTO:' + items[i]['email'];
     document.getElementById(image).src = items[i]['image'];
-    // console.log(items[i]['image']);
     if (items[i]['description'].length > 20){
       document.getElementById(description).innerHTML = items[i]['description'].substring(0, 20);
     }
@@ -206,13 +211,21 @@ function helperFunction(items) {
       document.getElementById(description).innerHTML = items[i]['description'];
     }
     document.getElementById(name).innerHTML = items[i]['name'];
+
+    var modalEmail = 'modalEmail' + i.toString();
+    var title = 'title' + i.toString();
+    var modalimg = 'modalimg' + i.toString();
+    var fullDescription = 'fullDescription' + i.toString();
+    document.getElementById(title).innerHTML = items[i]['name'];
+    document.getElementById(fullDescription).innerHTML = items[i]['description'];
+    document.getElementById(modalimg).src = items[i]['image'];
+    document.getElementById(modalEmail).href = 'MAILTO:' + items[i]['email'];
   }
   for (i = 5; i > items.length-1; i--) {
     var card = 'card' + i.toString();
     document.getElementById(card).hidden = true;
   }
 }
-
 
 // getRealTimeUpdates(helperFunction);
 getRealTimeUpdates(helperFunction);
