@@ -1,3 +1,18 @@
+// FIREBASE CONFIG
+var firebaseConfig = {
+  apiKey: "AIzaSyB1aqIHmgNnx1HdJ9mqTv67UVFrEMUfX-0",
+  authDomain: "barterhub-3c37c.firebaseapp.com",
+  databaseURL: "https://barterhub-3c37c.firebaseio.com",
+  projectId: "barterhub-3c37c",
+  storageBucket: "barterhub-3c37c.appspot.com",
+  messagingSenderId: "1040823246711",
+  appId: "1:1040823246711:web:7e8041584d5cd2fd7a0b72",
+  measurementId: "G-ZD27G0MVXH"
+};
+// Initialize Firebase (this is standard, don't change these two lines)
+firebase.initializeApp(firebaseConfig);
+var firestore = firebase.firestore();
+
 // Loads all of the user's current items
 function onLoad()
 {
@@ -14,36 +29,47 @@ function addItemToDatabase()
 {
   // Get all the data from the form
   var form = document.getElementById("add_item_form")
-  var name = form.item_name.value;
+  var itemName = form.item_name.value;
   var url = form.item_url.value;
   var descrip = form.inputted_description.value;
-  var quantity = form.item_quantity.value;
+  var quan = form.item_quantity.value;
 
-  // Generate date posted
-  var today = new Date();
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var date_posted = date+' '+time;
+  // Other info that will be sent to the database (sold and date posted):
+  var id = Math.floor(Math.random()*1000000);
+  //var currDate = firebase.firestore.Timestamp();
 
-  var tags = [];
-  if(form.foodBox.checked) { tags.push('food'); }
-  if(form.clothesBox.checked) { tags.push('clothes'); }
-  if(form.furnitureBox.checked) { tags.push('furniture'); }
-  if(form.appliancesBox.checked) { tags.push('appliances'); }
-  if(form.artsBox.checked) { tags.push('arts'); }
-  if(form.toysBox.checked) { tags.push('toys'); }
-  if(form.booksBox.checked) { tags.push('books'); }
-  if(form.technologyBox.checked) { tags.push('technology'); }
-  if(form.toolsBox.checked) { tags.push('tools'); }
-  if(form.servicesBox.checked) { tags.push('services'); }
-  
+  var item_tags = [];
+  if(form.foodBox.checked) { item_tags.push('food'); }
+  if(form.clothesBox.checked) { item_tags.push('clothes'); }
+  if(form.furnitureBox.checked) { item_tags.push('furniture'); }
+  if(form.appliancesBox.checked) { item_tags.push('appliances'); }
+  if(form.artsBox.checked) { item_tags.push('arts'); }
+  if(form.toysBox.checked) { item_tags.push('toys'); }
+  if(form.booksBox.checked) { item_tags.push('books'); }
+  if(form.technologyBox.checked) { item_tags.push('technology'); }
+  if(form.toolsBox.checked) { item_tags.push('tools'); }
+  if(form.servicesBox.checked) { item_tags.push('services'); }
+
   // TODO: QUERY DATABASE: create a new item and update the db
+  // Add a new document in collection "inventory"
+  firestore.collection("inventory").doc('card_' + id.toString()).set({
+      date_posted: firebase.firestore.Timestamp.now(),
+      description: descrip,
+      image: url,
+      name: itemName,
+      quantity: quan,
+      sold: false,
+      tags: item_tags
+  })
+  .then(function() {
+      console.log("Document successfully written!");
+  })
+  .catch(function(error) {
+      console.error("Error writing document: ", error);
+  });
 
-
-
-  // TODO: get the auto-generated id and set it below, then make the card
-  var id = '12345';
-  createCard(id, name, url, descrip, quantity, tags);
+  // Create the corresponding card
+  createCard(id, itemName, url, descrip, quan, tags);
 }
 // Creates a new card on the webpage containing the new item
 function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags)
