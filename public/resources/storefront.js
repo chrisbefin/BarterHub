@@ -159,6 +159,10 @@ function populateSearchedItems(items) {
     }
     document.getElementById(name).innerHTML = items[i]['name'];
   }
+  for (i = 5; i > items.length-1; i--) {
+    var card = 'card' + i.toString();
+    document.getElementById(card).hidden = true;
+  }
 }
 
 // this function will pull data from the database automatically everytime something
@@ -180,8 +184,8 @@ getRealTimeUpdates = function(callback){
 function helperFunction(items) {
   for (i = 0; i < items.length; i++) {
     // console.log(items[i]['description']);
-    var image = 'img' + i.toString()
-    var name = 'name' + i.toString()
+    var image = 'img' + i.toString();
+    var name = 'name' + i.toString();
     var description = 'description' + i.toString();
     document.getElementById(image).src = items[i]['image'];
     // console.log(items[i]['image']);
@@ -192,6 +196,10 @@ function helperFunction(items) {
       document.getElementById(description).innerHTML = items[i]['description'];
     }
     document.getElementById(name).innerHTML = items[i]['name'];
+  }
+  for (i = 5; i > items.length-1; i--) {
+    var card = 'card' + i.toString();
+    document.getElementById(card).hidden = true;
   }
 }
 
