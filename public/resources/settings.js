@@ -16,7 +16,7 @@ var firestore = firebase.firestore();
 
 //values from the the webpage
 
- var new_username = document.getElementById('name');
+ var new_username = document.getElementById('new_username');
  var old_password = document.getElementById('old_password');
  var new_password = document.getElementById('new_password');
  var confirm_password= document.getElementById("confirm_password");
@@ -43,7 +43,7 @@ var firestore = firebase.firestore();
      }
      if(new_username.value != ""){
        docUpdate.update({
-         username: new_username.value
+         name: new_username.value
        });
        alert("Username has been successfully updated to: " + new_username.value );
      }
