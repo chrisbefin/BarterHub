@@ -33,7 +33,12 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
+if (localStorage.getItem('email') == NULL) {
+  document.getElementById('inventoryLink').href = "../views/BBlogin.html";
+  document.getElementById('profileLink').href = "../views/BBlogin.html";
+  document.getElementById('settingsLink').href = "../views/BBlogin.html";
 
+}
 // the docRef is the specific document in our database you would like to update
 const docRef = firestore.collection("inventory");
 // this is the specific field we want to change
