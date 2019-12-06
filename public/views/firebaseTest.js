@@ -102,7 +102,8 @@ getRealTimeUpdates = function(){
       const myData = snapshot.data();
       console.log(myData[userName]);
       nameOutput.innerText = myData[userName];
-      imageOutput.src = myData[userImage]
+      imageOutput.src = "https://tinyurl.com/r9wfglu";
+
     }
   })
 }
