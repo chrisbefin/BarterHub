@@ -1,50 +1,83 @@
-// Loads all of the user's current items
-function onLoad()
-{
-  console.log("entered onLoad()");
-  // TODO: load all the person's items from the database
-  // Create cards for each item and append them to the webpage
-  for(var i = 0; i < 5; i++)
-  {
-    createCard('12345', 'gift!', 'some_img', 'a present for you', ['food', 'technology']);
-  }
-}
+// FIREBASE CONFIG
+var firebaseConfig = {
+  apiKey: "AIzaSyB1aqIHmgNnx1HdJ9mqTv67UVFrEMUfX-0",
+  authDomain: "barterhub-3c37c.firebaseapp.com",
+  databaseURL: "https://barterhub-3c37c.firebaseio.com",
+  projectId: "barterhub-3c37c",
+  storageBucket: "barterhub-3c37c.appspot.com",
+  messagingSenderId: "1040823246711",
+  appId: "1:1040823246711:web:7e8041584d5cd2fd7a0b72",
+  measurementId: "G-ZD27G0MVXH"
+};
+// Initialize Firebase (this is standard, don't change these two lines)
+firebase.initializeApp(firebaseConfig);
+var firestore = firebase.firestore();
+
+const docRef = firestore.collection("inventory");
+
+// Array to hold all items that belong to the current user
+// var item_keys = [];
+var items = {};
+var itemToDelete;
+var prevNumCards = 0;
+
 // Stores all the user's new item in the database
 function addItemToDatabase()
 {
-  // Check if all input is valid
+  // Get all the data from the form
   var form = document.getElementById("add_item_form")
-  var name = form.item_name.value;
+  var itemName = form.item_name.value;
   var url = form.item_url.value;
   var descrip = form.inputted_description.value;
-  var tags = [];
-  if(form.foodBox.checked) { tags.push('food'); }
-  if(form.clothesBox.checked) { tags.push('clothes'); }
-  if(form.furnitureBox.checked) { tags.push('furniture'); }
-  if(form.appliancesBox.checked) { tags.push('appliances'); }
-  if(form.artsBox.checked) { tags.push('arts'); }
-  if(form.toysBox.checked) { tags.push('toys'); }
-  if(form.booksBox.checked) { tags.push('books'); }
-  if(form.technologyBox.checked) { tags.push('technology'); }
-  if(form.toolsBox.checked) { tags.push('tools'); }
-  if(form.servicesBox.checked) { tags.push('services'); }
-  // TODO: QUERY DATABASE: create a new item and update the db
-  // TODO: get the auto-generated id and set it below, then make the card
-  var id = '1';
-  createCard(id, name, url, descrip, tags);
+  var quan = form.item_quantity.value;
+
+  // Other info that will be sent to the database (sold and date posted):
+  var id = Math.floor(Math.random()*1000000);
+  //var currDate = firebase.firestore.Timestamp();
+
+  var item_tags = [];
+  if(form.foodBox.checked) { item_tags.push('food'); }
+  if(form.clothesBox.checked) { item_tags.push('clothes'); }
+  if(form.furnitureBox.checked) { item_tags.push('furniture'); }
+  if(form.appliancesBox.checked) { item_tags.push('appliances'); }
+  if(form.artsBox.checked) { item_tags.push('arts'); }
+  if(form.toysBox.checked) { item_tags.push('toys'); }
+  if(form.booksBox.checked) { item_tags.push('books'); }
+  if(form.technologyBox.checked) { item_tags.push('technology'); }
+  if(form.toolsBox.checked) { item_tags.push('tools'); }
+  if(form.servicesBox.checked) { item_tags.push('services'); }
+
+  // Add a new document in collection "inventory"
+  firestore.collection("inventory").doc('card_' + id.toString()).set({
+      date_posted: firebase.firestore.Timestamp.now(),
+      description: descrip,
+      image: url,
+      name: itemName,
+      quantity: quan,
+      sold: false,
+      tags: item_tags
+  })
+  .then(function() {
+      console.log("Document successfully written!");
+  })
+  .catch(function(error) {
+      console.error("Error writing document: ", error);
+  });
+
+  // Create the corresponding card
+  createCard('card_' + id, itemName, url, descrip, quan, tags);
+
+  // location.reload();
 }
 // Creates a new card on the webpage containing the new item
-function createCard(itemID, itemName, itemImg, itemDescrip, itemTags)
+function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags)
 {
   // Get all the info submitted by the modal form and create a card with all those attributes
-  // TODO: Set the card's id to something unique that matches its identity in the database
-
   var container = document.getElementById('item_card_holder');
   var newCard = document.createElement('div');
   newCard.classList = 'card';
-  // TODO: Need to pull all of these values from the database or form
   var item_id = itemID;
-  var card_id = "card_" + item_id;
+  var card_id = item_id;
   var item_name = itemName;
   var item_img = itemImg;
   var description = itemDescrip;
@@ -62,14 +95,14 @@ function createCard(itemID, itemName, itemImg, itemDescrip, itemTags)
   }
 
   // May need to add the <div class="col-auto mb-3"> to keep it in format
-  // TODO: give each card a unique id!!!
   var content = `
   <div id="${card_id}" class="card" style="width: 20rem;">
     <img src="${item_img}" class="card-img-top" alt="${item_name}">
     <div class="card-body">
       <h5 class="card-title">${item_name}</h5>
+      <p class="card-text"><b>Quantity: </b>${itemQuantity}</p>
       <p class="card-text">${description}</p>
-      <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
+      <input type="button" data-id="${card_id}" class="open-delete_item btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
       ${tag_content}
     </div>
   </div>
@@ -78,14 +111,92 @@ function createCard(itemID, itemName, itemImg, itemDescrip, itemTags)
   container.innerHTML += content;
 }
 
+// Handler that deals with remove item calls
+$(document).on("click", ".open-delete_item", function () {
+     itemToDelete = $(this).data('id');
+});
+
 function removeCard()
 {
-  var elem = document.getElementById('card_');
+  var elem = document.getElementById(itemToDelete);
   elem.parentNode.removeChild(elem);
   return false;
 }
 
 function removeItemFromDatabase()
 {
-
+  docRef.doc(itemToDelete).delete().then(function() {
+      console.log("Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
+  removeCard();
+  // location.reload(0);
 }
+
+getRealTimeUpdates = function(callback){
+  docRef.onSnapshot({
+    includeMetadataChanges: true
+  }, function (querySnapshot){
+      querySnapshot.forEach(function(doc) {
+          items[doc.id] = doc.data();
+      });
+      callback(items);
+      // console.log("Counted as a metadata change!");
+      // console.log('Before if statement');
+      // console.log('PrevNum', prevNumCards);
+      // console.log('Items length', Object.keys(items).length);
+      // if(prevNumCards == 0)
+      // {
+      //   prevNumCards = Object.keys(items).length;
+      // }
+      // else if(prevNumCards != Object.keys(items).length)
+      // {
+      //   console.log('reloaded!');
+      //   prevNumCards = Object.keys(items).length;
+      //   location.reload();
+      // }
+      // console.log('After if statement');
+      // console.log('PrevNum', prevNumCards);
+      // console.log('Items length', Object.keys(items).length);
+  });
+}
+
+// this function pulls data manually (you must click the pull button)
+// pullData = function(callback){
+//   docRef.get().then(function (querySnapshot){
+//     querySnapshot.forEach(function(doc) {
+//       items[doc.id] = doc.data();
+//     });
+//   }).catch(function (error) {
+//     console.log("Got an error");
+//   });
+// }
+
+function onLoad(items) {
+  // TODO: Need to check for the user!
+  // console.log(items);
+
+  var item_keys = Object.keys(items);
+
+  for (i = 0; i < item_keys.length; i++) {
+    var itemID = item_keys[i];
+    var itemName = items[itemID]['name'];
+    var itemImg = items[itemID]['image'];
+    var itemDescrip;
+    if (items[itemID]['description'].length > 20){
+      itemDescrip = items[itemID]['description'].substring(0, 30);
+    }
+    else {
+      itemDescrip = items[itemID]['description'];
+    }
+    var itemQuantity = items[itemID]['quantity'];
+    var itemTags = items[itemID]['tags'];
+    createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags);
+  }
+  callback(secondFunction)
+}
+
+// pullData(onLoad);
+
+getRealTimeUpdates(onLoad);
