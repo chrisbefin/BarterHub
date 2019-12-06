@@ -19,6 +19,7 @@ const docRef = firestore.collection("inventory");
 // var item_keys = [];
 var items = {};
 var itemToDelete;
+var prevNumCards = 0;
 
 // Stores all the user's new item in the database
 function addItemToDatabase()
@@ -65,6 +66,8 @@ function addItemToDatabase()
 
   // Create the corresponding card
   createCard('card_' + id, itemName, url, descrip, quan, tags);
+
+  // location.reload();
 }
 // Creates a new card on the webpage containing the new item
 function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags)
@@ -73,7 +76,6 @@ function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTa
   var container = document.getElementById('item_card_holder');
   var newCard = document.createElement('div');
   newCard.classList = 'card';
-  // TODO: Need to pull all of these values from the database or form
   var item_id = itemID;
   var card_id = item_id;
   var item_name = itemName;
@@ -123,26 +125,58 @@ function removeCard()
 
 function removeItemFromDatabase()
 {
-  // TODO: need to finish!!!!!
   docRef.doc(itemToDelete).delete().then(function() {
       console.log("Document successfully deleted!");
   }).catch(function(error) {
       console.error("Error removing document: ", error);
   });
   removeCard();
+  // location.reload(0);
 }
 
 getRealTimeUpdates = function(callback){
-  docRef.onSnapshot(function (querySnapshot){
+  docRef.onSnapshot({
+    includeMetadataChanges: true
+  }, function (querySnapshot){
       querySnapshot.forEach(function(doc) {
           items[doc.id] = doc.data();
       });
       callback(items);
+      // console.log("Counted as a metadata change!");
+      // console.log('Before if statement');
+      // console.log('PrevNum', prevNumCards);
+      // console.log('Items length', Object.keys(items).length);
+      // if(prevNumCards == 0)
+      // {
+      //   prevNumCards = Object.keys(items).length;
+      // }
+      // else if(prevNumCards != Object.keys(items).length)
+      // {
+      //   console.log('reloaded!');
+      //   prevNumCards = Object.keys(items).length;
+      //   location.reload();
+      // }
+      // console.log('After if statement');
+      // console.log('PrevNum', prevNumCards);
+      // console.log('Items length', Object.keys(items).length);
   });
 }
 
+// this function pulls data manually (you must click the pull button)
+// pullData = function(callback){
+//   docRef.get().then(function (querySnapshot){
+//     querySnapshot.forEach(function(doc) {
+//       items[doc.id] = doc.data();
+//     });
+//   }).catch(function (error) {
+//     console.log("Got an error");
+//   });
+// }
+
 function onLoad(items) {
   // TODO: Need to check for the user!
+  // console.log(items);
+
   var item_keys = Object.keys(items);
 
   for (i = 0; i < item_keys.length; i++) {
@@ -160,7 +194,9 @@ function onLoad(items) {
     var itemTags = items[itemID]['tags'];
     createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags);
   }
+  callback(secondFunction)
 }
 
+// pullData(onLoad);
 
 getRealTimeUpdates(onLoad);
