@@ -79,7 +79,7 @@ function addItemToDatabase()
   });
 
   // Create the corresponding card
-  // createCard('card_' + id, itemName, url, descrip, quan, tags);
+  createCard('card_' + id, itemName, url, descrip, quan, tags);
 }
 // Creates a new card on the webpage containing the new item
 function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags)
@@ -159,11 +159,7 @@ getRealTimeUpdates = function(callback){
     includeMetadataChanges: true
   }, function (querySnapshot){
       querySnapshot.forEach(function(doc) {
-          var info = doc.data();
-          if(info['email'] == isNotEmail)
-          {
-            items[doc.id] = doc.data();
-          }
+          items[doc.id] = doc.data();
       });
       callback(items);
   });
@@ -177,18 +173,22 @@ function onLoad(items) {
 
   for (i = 0; i < item_keys.length; i++) {
     var itemID = item_keys[i];
-    var itemName = items[itemID]['name'];
-    var itemImg = items[itemID]['image'];
-    var itemDescrip;
-    if (items[itemID]['description'].length > 20){
-      itemDescrip = items[itemID]['description'].substring(0, 30);
+    var itemEmail = items[itemID]['email'];
+    if(itemEmail == isNotEmail)
+    {
+      var itemName = items[itemID]['name'];
+      var itemImg = items[itemID]['image'];
+      var itemDescrip;
+      if (items[itemID]['description'].length > 20){
+        itemDescrip = items[itemID]['description'].substring(0, 30);
+      }
+      else {
+        itemDescrip = items[itemID]['description'];
+      }
+      var itemQuantity = items[itemID]['quantity'];
+      var itemTags = items[itemID]['tags'];
+      createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags);
     }
-    else {
-      itemDescrip = items[itemID]['description'];
-    }
-    var itemQuantity = items[itemID]['quantity'];
-    var itemTags = items[itemID]['tags'];
-    createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags);
   }
 }
 
