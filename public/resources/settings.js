@@ -16,7 +16,6 @@ var firestore = firebase.firestore();
 
 //values from the the webpage
  var email = isNotEmail;
- console.log(email);
  var new_username = document.getElementById('new_username');
  var old_password = document.getElementById('old_password');
  var new_password = document.getElementById('new_password');
@@ -40,7 +39,7 @@ var firestore = firebase.firestore();
        }
      }
      else{
-       alert("The new password does not match the ReEntered password");
+       console.log("The new password does not match the ReEntered password");
      }
      if(new_username.value != ""){
        docUpdate.update({
