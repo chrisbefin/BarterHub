@@ -142,8 +142,8 @@ pullDataButton.addEventListener("click", function(){
 
 function populateSearchedItems(items) {
   var length = items.length;
-  if (items.length > 6) {
-    length = 6;
+  if (items.length > 12) {
+    length = 12;
   }
   for (i = 0; i < length; i++) {
     console.log('here')
@@ -170,12 +170,15 @@ function populateSearchedItems(items) {
     var title = 'title' + i.toString();
     var modalimg = 'modalimg' + i.toString();
     var fullDescription = 'fullDescription' + i.toString();
+    var quantity = 'quantity' + i.toString();
+    var date = 'date' + i.toString();
     document.getElementById(title).innerHTML = items[i]['name'];
     document.getElementById(fullDescription).innerHTML = items[i]['description'];
     document.getElementById(modalimg).src = items[i]['image'];
     document.getElementById(modalEmail).href = 'MAILTO:' + items[i]['email'];
+    document.getElementById(quantity).innnerText = 'Quantity: ' + items[i]['quantity'].toString();
   }
-  for (i = 5; i > items.length-1; i--) {
+  for (i = 11; i > items.length-1; i--) {
     var card = 'card' + i.toString();
     document.getElementById(card).hidden = true;
   }
@@ -200,8 +203,8 @@ getRealTimeUpdates = function(callback){
 
 function helperFunction(items) {
   var length = items.length;
-  if (items.length > 6) {
-    length = 6;
+  if (items.length > 12) {
+    length = 12;
   }
   for (i = 0; i < items.length; i++) {
     var email = 'email' + i.toString();
@@ -224,12 +227,15 @@ function helperFunction(items) {
     var title = 'title' + i.toString();
     var modalimg = 'modalimg' + i.toString();
     var fullDescription = 'fullDescription' + i.toString();
+    var quantity = 'quantity' + i.toString();
+    var date = 'date' + i.toString();
     document.getElementById(title).innerHTML = items[i]['name'];
     document.getElementById(fullDescription).innerHTML = items[i]['description'];
     document.getElementById(modalimg).src = items[i]['image'];
     document.getElementById(modalEmail).href = 'MAILTO:' + items[i]['email'];
+    document.getElementById(quantity).innerText = 'Quantity: ' + items[i]['quantity'];
   }
-  for (i = 5; i > items.length-1; i--) {
+  for (i = 11; i > items.length-1; i--) {
     var card = 'card' + i.toString();
     document.getElementById(card).hidden = true;
   }
