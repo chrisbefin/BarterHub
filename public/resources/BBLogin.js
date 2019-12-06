@@ -16,7 +16,7 @@ var firestore = firebase.firestore();
 var email = document.getElementById('email');
 var password = document.getElementById('password');
 var pullData = document.getElementById("login_button")
-
+localStorage.setItem("loggedIn", false);
 
 
 pullData.addEventListener("click", function(){
@@ -27,6 +27,7 @@ pullData.addEventListener("click", function(){
       if (doc.get('password') == password.value){
         //isNotEmail = email.value;
         localStorage.setItem("email", email.value);
+        localStorage.setItem("loggedIn", true);
         //console.log(isNotEmail);
         window.location = "../index.html";
       }

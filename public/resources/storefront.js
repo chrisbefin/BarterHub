@@ -33,7 +33,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
-if (localStorage.getItem('email') == NULL) {
+if (localStorage.getItem('loggedIn') == false) {
+  console.log('here');
   document.getElementById('inventoryLink').href = "../views/BBlogin.html";
   document.getElementById('profileLink').href = "../views/BBlogin.html";
   document.getElementById('settingsLink').href = "../views/BBlogin.html";
