@@ -11,17 +11,6 @@ var firebaseConfig = {
 
 
 firebase.initializeApp(firebaseConfig);
-// import * as firebase from "firebase";
-//
-// const config = {...};
-//
-// export default !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
-//
-// // Other file
-// import firebase from '../firebase';
-// ...
-// console.log(firebase.name);
-// console.log(firebase.database());
 var firestore = firebase.firestore();
 
 var email = document.getElementById('email');
@@ -36,6 +25,8 @@ pullData.addEventListener("click", function(){
     console.log(doc.get('password'));
     if(doc.exists){
       if (doc.get('password') == password.value){
+        isNotEmail = email.value;
+        console.log(isNotEmail);
         window.location = "../index.html";
       }
       else{
