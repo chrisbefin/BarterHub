@@ -30,22 +30,35 @@ function addItemToDatabase()
   var url = form.item_url.value;
   var descrip = form.inputted_description.value;
   var quan = form.item_quantity.value;
+  console.log(form.foodBox.checked);
+  if(itemName == "" || url == "" || descrip == "" || quan == "")
+  {
+    alert("Error: provide a value for each field");
+    return;
+  }
 
   // Other info that will be sent to the database (sold and date posted):
   var id = Math.floor(Math.random()*1000000);
   //var currDate = firebase.firestore.Timestamp();
 
   var item_tags = [];
-  if(form.foodBox.checked) { item_tags.push('food'); }
-  if(form.clothesBox.checked) { item_tags.push('clothes'); }
-  if(form.furnitureBox.checked) { item_tags.push('furniture'); }
-  if(form.appliancesBox.checked) { item_tags.push('appliances'); }
-  if(form.artsBox.checked) { item_tags.push('arts'); }
-  if(form.toysBox.checked) { item_tags.push('toys'); }
-  if(form.booksBox.checked) { item_tags.push('books'); }
-  if(form.technologyBox.checked) { item_tags.push('technology'); }
-  if(form.toolsBox.checked) { item_tags.push('tools'); }
-  if(form.servicesBox.checked) { item_tags.push('services'); }
+  var noneChecked = true;
+  if(form.foodBox.checked) { item_tags.push('food'); noneChecked = false;}
+  if(form.clothesBox.checked) { item_tags.push('clothes'); noneChecked = false;}
+  if(form.furnitureBox.checked) { item_tags.push('furniture'); noneChecked = false;}
+  if(form.appliancesBox.checked) { item_tags.push('appliances'); noneChecked = false;}
+  if(form.artsBox.checked) { item_tags.push('arts'); noneChecked = false;}
+  if(form.toysBox.checked) { item_tags.push('toys'); noneChecked = false;}
+  if(form.booksBox.checked) { item_tags.push('books'); noneChecked = false;}
+  if(form.technologyBox.checked) { item_tags.push('technology'); noneChecked = false;}
+  if(form.toolsBox.checked) { item_tags.push('tools'); noneChecked = false;}
+  if(form.servicesBox.checked) { item_tags.push('services'); noneChecked = false;}
+
+  if(noneChecked)
+  {
+    alert("Error: provide a value for each field");
+    return;
+  }
 
   // Add a new document in collection "inventory"
   firestore.collection("inventory").doc('card_' + id.toString()).set({
@@ -59,6 +72,7 @@ function addItemToDatabase()
   })
   .then(function() {
       console.log("Document successfully written!");
+      successfulAdd(true);
   })
   .catch(function(error) {
       console.error("Error writing document: ", error);
@@ -127,11 +141,20 @@ function removeItemFromDatabase()
 {
   docRef.doc(itemToDelete).delete().then(function() {
       console.log("Document successfully deleted!");
+      successfulAdd(true);
   }).catch(function(error) {
       console.error("Error removing document: ", error);
   });
   removeCard();
   // location.reload(0);
+}
+
+function successfulAdd(success)
+{
+  if(success)
+  {
+    location.reload();
+  }
 }
 
 getRealTimeUpdates = function(callback){
