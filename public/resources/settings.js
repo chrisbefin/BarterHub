@@ -52,7 +52,7 @@ var firestore = firebase.firestore();
      }
      if(new_zip.value != ""){
        docUpdate.update({
-         zipcode: new_zip.value
+         zipCode: new_zip.value
        });
        alert("Zipcode has been successfully updated to: " + new_zip.value);
      }
