@@ -13,15 +13,15 @@
   background-color: #e7e7e7;
   }
   .food {}
-  .technology {}
   .clothes {}
-  .appliances {}
-  .services {}
-  .food {}
-  .toys {}
-  .tools {}
   .furniture {}
+  .appliances {}
+  .arts {}
+  .toys {}
   .books {}
+  .technology {}
+  .tools {}
+  .services {}
   </style>
 </head>
 <body>
@@ -61,7 +61,7 @@
 
   <!-- Line up cards in rows of 3-4 -->
   <div class="card-columns" id="item_card_holder">
-    <div class="col-auto mb-3">
+    <div class="col-auto mb-3" id="card_format">
 
       <!-- Create new card -->
       <div class="card" style="width: 20rem;">
@@ -70,73 +70,6 @@
         <div class="card-body">
           <h5 class="card-title">Add New Item</h5>
           <p class="card-text"></p>
-        </div>
-      </div>
-
-      <!-- Inventory Item Cards -->
-      <div class="card" style="width: 20rem;">
-        <!-- <a href="#" class="stretched-link"></a> -->
-        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-          <!-- Item tags! -->
-          <br><br>
-          <span class="label food">food</span>
-          <span class="label technology">technology</span>
-          <span class="label clothes">clothes</span>
-          <span class="label appliances">appliances</span>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-        <!-- <a href="#" class="stretched-link"></a> -->
-        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-        <!-- <a href="#" class="stretched-link"></a> -->
-        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-        <!-- <a href="#" class="stretched-link"></a> -->
-        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-        <!-- <a href="#" class="stretched-link"></a> -->
-        <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        </div>
-      </div>
-
-      <div class="card" style="width: 20rem;">
-        <!-- <a href="#" class="stretched-link"></a> -->
-        <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Item Description</p>
-          <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
         </div>
       </div>
 
@@ -175,23 +108,23 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="add_item_form">
           <!-- Item Name -->
           <div class="form-group">
             <h4>Item Name</h4>
-            <input type="text" class="form-control" id="item-name" name="item-name" placeholder="">
+            <input type="text" class="form-control" id="item_name" name="item_name" placeholder="">
           </div>
 
           <!-- Upload Item Image -->
           <div class="form-group">
-            <h4>Upload Photo:</h4>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="exampleFormControlFile1">
+            <h4>URL to Photo:</h4>
+            <input type="text" class="form-control" id="item_url" name="item_url" placeholder="">
           </div>
 
           <!-- Article Text -->
           <div class="form-group">
             <h4>Description</h4>
-            <textarea id="inputted-description" rows="5" cols="50"></textarea>
+            <textarea id="inputted_description" rows="5" cols="50"></textarea>
           </div>
 
           <!-- Form row object part two -->
@@ -231,8 +164,8 @@
               </label>
             </div>
           </div>
-          <!-- Adding form buttons here --> <!-- Part of input button: class="btn btn-primary" -->
-          <input type="button" class="btn btn-primary" value="Create" data-dismiss="modal" onclick="createCard(this)">
+          <!-- Adding form buttons here -->
+          <input type="button" class="btn btn-primary" value="Create" data-dismiss="modal" onclick="addItemToDatabase()">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         </form>
 
@@ -246,75 +179,7 @@
 </div>
 
 <script type="text/javascript">
-  // Loads all of the user's current items
-  function onLoad()
-  {
-    console.log("TODO");
-    // TODO: load all the person's items from the database
-  }
-  // Stores all the user's new item in the database
-  function addItemToDatabase()
-  {
-    // TODO: Send new item to the database and add item key to user
-    console.log("TODO");
-  }
-  // Creates a new card on the webpage containing the new item
-  function createCard(theForm)
-  {
-    // Get all the info submitted by the modal form and create a card with all those attributes
-    // TODO: Set the card's id to something unique that matches its identity in the database
-
-    var container = document.getElementById('item_card_holder');
-    var newCard = document.createElement('div');
-    newCard.classList = 'card';
-    // TODO: Need to pull all of these values from the database or form
-    var item_id = "";
-    var card_id = "card_" + item_id;
-    var item_name = "Filler name--------";
-    var item_img = "image_url";
-    var description = "Item description";
-    var item_tags = []; // Items can have many tags or none -- have to add them!
-    var tag_content = ``;
-    if(item_tags.length != 0)
-    {
-      tag_content += `
-      <br><br>`;
-      for(var i = 0; i < item_tags.length; i++)
-      {
-        tag_content += `
-        <span class="label ${item_tags[i]}">${item_tags[i]}</span>`;
-      }
-    }
-
-    // May need to add the <div class="col-auto mb-3"> to keep it in format
-    // TODO: give each card a unique id!!!
-    var content = `
-    <div id="${card_id}" class="card" style="width: 20rem;">
-      <!-- <a href="#" class="stretched-link"></a> -->
-      <img src="${item_img}" class="card-img-top" alt="${item_name}">
-      <div class="card-body">
-        <h5 class="card-title">${item_name}</h5>
-        <p class="card-text">${description}</p>
-        <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_item" value="Remove Item"/>
-        ${tag_content}
-      </div>
-    </div>
-    `;
-
-    container.innerHTML += content;
-  }
-
-  function removeCard()
-  {
-    var elem = document.getElementById('card_');
-    elem.parentNode.removeChild(elem);
-    return false;
-  }
-
-  function removeItemFromDatabase()
-  {
-
-  }
+  onLoad();
 </script>
 
 </body>

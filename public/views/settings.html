@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <meta charset="utf-8">
     <style>
       hr.purpleline {
         border: 1px solid #007bff;
@@ -37,13 +38,18 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Setting</title>
   </head>
   <body class="help">
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-      <a class="navbar-brand" href="../index.html">BarterHUB</a>
+      <a class="navbar-brand" href="#">BarterHUB</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,7 +62,7 @@
             <a class="nav-link" href="profile.html">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="settings.html">Settings<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="settings.html">Settings</a>
           </li>
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
@@ -71,38 +77,38 @@
     <form>
       <div class="container border border-dark rounded mar ">
         <h1>Settings</h1>
-        <hr class="purpleline">
+        <hr class="purpleline"></hr>
         <br>
-        <h3>Change Your Username</h3>
+        <h3>Change Username</h3>
         <div class="form-group rightpadding">
-          <label for="new_username">Enter New Username:</label>
           <input type="text"  class="form-control border-primary textboxsize" id="new_username" placeholder="New Username">
         </div>
         <br>
         <h3>Change Your Password</h3>
         <div class="form-group rightpadding colspan="3" ">
           <div class="form-group">
-            <label for="old_pws">Enter Old Password:</label>
-            <input type="text" class="form-control border-primary textboxsize" id="old_pws" placeholder="Old Password">
+            <label>Enter Old Password:</label>
+            <input type="text" class="form-control border-primary textboxsize" id="old_password" placeholder="Old Password">
           </div>
           <div class="form-group">
-            <label for="new_pws">Enter New Password:</label>
-            <input type="text" class="form-control border-primary textboxsize" id="new_pws" placeholder="New Password">
+            <label>Enter New Password:</label>
+            <input type="text" class="form-control border-primary textboxsize" id="new_password" placeholder="New Password">
           </div>
           <div class="form-group">
-            <label for="confirm_pws">ReEnter New Password:</label>
-            <input type="text" class="form-control border-primary textboxsize" id="cofirm_pws" placeholder="ReEnter Password">
+            <label>ReEnter New Password:</label>
+            <input type="text" class="form-control border-primary textboxsize" id="confirm_password" placeholder="ReEnter Password">
           </div>
         </div>
         <br>
         <h3>Change Your Location(zip)</h3>
         <div class="form-group rightpadding">
-          <label for="new_zip">Enter New Zip:</label>
+          <label>Enter New Zip:</label>
           <input type="text" class="form-control border-primary textboxsize" id="new_zip" placeholder=" New Zip Code">
         </div>
         <br>
-        <button type="button" class="btn btn-primary">Submit Changes</button>
+        <button id="submit_changes" class="btn btn-primary" type="button">Submit Changes</button>
       </div>
+      <script type="text/javascript" src="../resources/settings.js"></script>
     </form>
   </body>
 </html>
