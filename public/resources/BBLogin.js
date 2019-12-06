@@ -25,8 +25,9 @@ pullData.addEventListener("click", function(){
     console.log(doc.get('password'));
     if(doc.exists){
       if (doc.get('password') == password.value){
-        isNotEmail = email.value;
-        console.log(isNotEmail);
+        //isNotEmail = email.value;
+        localStorage.setItem("email", email.value);
+        //console.log(isNotEmail);
         window.location = "../index.html";
       }
       else{

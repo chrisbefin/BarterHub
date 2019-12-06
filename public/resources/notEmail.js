@@ -1,1 +1,1 @@
-var isNotEmail = NULL;
+var isNotEmail = localStorage.getItem("email");
