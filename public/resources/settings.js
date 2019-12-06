@@ -24,7 +24,7 @@ var firestore = firebase.firestore();
  const submit_changes = document.getElementById("submit_changes");
 
  submit_changes.addEventListener("click", function(){
-   var docUpdate = firestore.collection("users").doc("VNHuSz5sqhgDeXcusL6a");
+   var docUpdate = firestore.collection("users").doc(isNotEmail);
    //alert(docUpdate.getString("password"));
    docUpdate.get().then(function(doc){
      if(confirm_password.value != "" && new_password.value != "" && confirm_password.value == new_password.value ){
