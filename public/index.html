@@ -10,15 +10,18 @@
     <title>Welcome to Firebase Hosting</title>
 
     <!-- BE SURE TO KEEP THIS UPDATED!!! Had errors in loading bc version was 7.3.0 -->
-    <script defer src="/__/firebase/7.4.0/firebase-app.js"></script>
+    <!-- <script defer src="/__/firebase/7.4.0/firebase-app.js"></script> -->
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.4.0/firebase-auth.js"></script>
+    <!-- <script defer src="/__/firebase/7.4.0/firebase-auth.js"></script>
     <script defer src="/__/firebase/7.4.0/firebase-database.js"></script>
     <script defer src="/__/firebase/7.4.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.4.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+    <script defer src="/__/firebase/7.4.0/firebase-storage.js"></script> -->
 
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <!-- <script defer src="/__/firebase/init.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
     <!-- ALL OF OUR INDEX.HTML CODE -->
@@ -40,132 +43,260 @@
           </li>
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="Search">Search</button>
+              <input id=search class="form-control mr-sm-2" type="search" placeholder="Search Tags" aria-label="Search">
+              <button id=searchButton class="btn btn-outline-primary my-2 my-sm-0" type='button'>Search</button>
             </form>
           </li>
         </ul>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="Log In">Log In</button>
+        <a class="btn btn-outline-primary my-2 my-sm-0" type="Log In" href="views/BBLogin.html">Log In</a>
       </div>
     </nav>
+
+    <div id="modal0" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="title0" class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="fullDescription0">Modal body text goes here.</p>
+            <p id="quantity0"> hi</p>
+            <img id="modalimg0" src="#" class="card-img-top" alt="Sample item">
+          </div>
+          <div class="modal-footer">
+            <a id="modalEmail0" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal1" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="title1" class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="fullDescription1">Modal body text goes here.</p>
+            <p id="quantity1">quantity: </p>
+            <img id="modalimg1" src="#" class="card-img-top" alt="Sample item">
+          </div>
+          <div class="modal-footer">
+            <a id="modalEmail1" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal2" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="title2" class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="fullDescription2">Modal body text goes here.</p>
+            <p id="quantity2">quantity: </p>
+            <img id="modalimg2" src="#" class="card-img-top" alt="Sample item">
+          </div>
+          <div class="modal-footer">
+            <a id="modalEmail2" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal3" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="title3" class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="fullDescription3">Modal body text goes here.</p>
+            <p id="quantity3">quantity: </p>
+            <img id="modalimg3" src="#" class="card-img-top" alt="Sample item">
+          </div>
+          <div class="modal-footer">
+            <a id="modalEmail3" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal4" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="title4" class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="fullDescription4">Modal body text goes here.</p>
+            <p id="quantity4">quantity: </p>
+            <img id="modalimg4" src="#" class="card-img-top" alt="Sample item">
+          </div>
+          <div class="modal-footer">
+            <a id="modalEmail4" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal5" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="title5" class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="fullDescription5">Modal body text goes here.</p>
+            <p id="quantity5">quantity: </p>
+            <img id="modalimg5" src="#" class="card-img-top" alt="Sample item">
+          </div>
+          <div class="modal-footer">
+            <a id="modalEmail5" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container-fluid">
       <div class="row">
-          <span class="pt-3 border">
-            <div class="col">
-              <ul class="nav flex-column">
-                <h3 class="font-weight-light">Tags:</h3>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="foodCheck">
-                    <label class="form-check-label" for="foodCheck">Food</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="technologyCheck">
-                    <label class="form-check-label" for="technologyCheck">Technology</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="clothesCheck">
-                    <label class="form-check-label" for="clothesCheck">Clothes</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="appliancesCheck">
-                    <label class="form-check-label" for="appliancesCheck">Appliances</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="servicesCheck">
-                    <label class="form-check-label" for="servicesCheck">Services</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="toysCheck">
-                    <label class="form-check-label" for="toysCheck">Toys</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="toolsCheck">
-                    <label class="form-check-label" for="toolsCheck">Tools</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="furnitureCheck">
-                    <label class="form-check-label" for="furnitureCheck">Furniture</label>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="booksCheck">
-                    <label class="form-check-label" for="booksCheck">Books</label>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </span>
         <div class="col">
             <h3 class="font-weight-light">Recently Added Items</h3>
             <div class="card-columns">
                 <div class="col-auto mb-3">
                   <!-- Inventory Item Cards -->
-                  <div class="card" style="width: 16rem;">
-                    <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+                  <div id="card0" class="card" style="width: 16rem;" hidden>
+                    <img id="img0" src="#" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 class="card-title">Item Name</h5>
-                      <p class="card-text">Item Description</p>
+                      <h5 id="name0" class="card-title">Item Name</h5>
+                      <p id="description0" class="card-text">Item Description</p>
+                      <a id="email0" class="btn btn-outline-primary my-2 px-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal0">Details</button>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
-                    <!-- <a href="#" class="stretched-link"></a> -->
-                    <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
+                  <div id="card1" class="card" style="width: 16rem;" hidden>
+                    <img id="img1" src="#" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 class="card-title">Item Name</h5>
-                      <p class="card-text">Item Description</p>
+                      <h5 id="name1" class="card-title">Item Name</h5>
+                      <p id="description1" class="card-text">Item Description</p>
+                      <a id="email1" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal1">Details</button>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
-                    <!-- <a href="#" class="stretched-link"></a> -->
-                    <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+                  <div id="card2" class="card" style="width: 16rem;" hidden>
+                    <img id="img2" src="#" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 class="card-title">Item Name</h5>
-                      <p class="card-text">Item Description</p>
+                      <h5 id="name2" class="card-title">Item Name</h5>
+                      <p id="description2" class="card-text">Item Description</p>
+                      <a id="email2" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal2">Details</button>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
-                    <!-- <a href="#" class="stretched-link"></a> -->
-                    <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
+                  <div id="card3" class="card" style="width: 16rem;" hidden>
+                    <img id="img3" src="#" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 class="card-title">Item Name</h5>
-                      <p class="card-text">Item Description</p>
+                      <h5 id="name3" class="card-title">Item Name</h5>
+                      <p id="description3" class="card-text">Item Description</p>
+                      <a id="email3" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal3">Details</button>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
-                    <!-- <a href="#" class="stretched-link"></a> -->
-                    <img src="https://americannegotiationinstitute.com/wp-content/uploads/2016/12/gift-06.jpg" class="card-img-top" alt="Sample item">
+                  <div id="card4" class="card" style="width: 16rem;" hidden>
+                    <img id="img4" src="#" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 class="card-title">Item Name</h5>
-                      <p class="card-text">Item Description</p>
+                      <h5 id="name4" class="card-title">Item Name</h5>
+                      <p id="description4" class="card-text">Item Description</p>
+                      <a id="email4" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal4">Details</button>
                     </div>
                   </div>
 
-                  <div class="card" style="width: 16rem;">
-                    <!-- <a href="#" class="stretched-link"></a> -->
-                    <img src="https://assets-www.calm.com/5b5699bc2f684fd10a6566dcee3a64d9.png" class="card-img-top" alt="Sample item">
+                  <div id="card5" class="card" style="width: 16rem;" hidden>
+                    <img id="img5" src="#" class="card-img-top" alt="Sample item" height=200>
                     <div class="card-body">
-                      <h5 class="card-title">Item Name</h5>
-                      <p class="card-text">Item Description</p>
+                      <h5 id="name5" class="card-title">Item Name</h5>
+                      <p id="description5" class="card-text">Item Description</p>
+                      <a id="email5" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal5">Details</button>
+                    </div>
+                  </div>
+
+                  <div id="card6" class="card" style="width: 16rem;" hidden>
+                    <img id="img6" src="#" class="card-img-top" alt="Sample item" height=200>
+                    <div class="card-body">
+                      <h5 id="name6" class="card-title">Item Name</h5>
+                      <p id="description6" class="card-text">Item Description</p>
+                      <a id="email6" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal5">Details</button>
+                    </div>
+                  </div>
+
+                  <div id="card7" class="card" style="width: 16rem;" hidden>
+                    <img id="img7" src="#" class="card-img-top" alt="Sample item" height=200>
+                    <div class="card-body">
+                      <h5 id="name7" class="card-title">Item Name</h5>
+                      <p id="description7" class="card-text">Item Description</p>
+                      <a id="email7" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal5">Details</button>
+                    </div>
+                  </div>
+
+                  <div id="card8" class="card" style="width: 16rem;" hidden>
+                    <img id="img8" src="#" class="card-img-top" alt="Sample item" height=200>
+                    <div class="card-body">
+                      <h5 id="name8" class="card-title">Item Name</h5>
+                      <p id="description8" class="card-text">Item Description</p>
+                      <a id="email8" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal5">Details</button>
+                    </div>
+                  </div>
+
+                  <div id="card9" class="card" style="width: 16rem;" hidden>
+                    <img id="img9" src="#" class="card-img-top" alt="Sample item" height=200>
+                    <div class="card-body">
+                      <h5 id="name9" class="card-title">Item Name</h5>
+                      <p id="description9" class="card-text">Item Description</p>
+                      <a id="email9" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal5">Details</button>
+                    </div>
+                  </div>
+
+                  <div id="card10" class="card" style="width: 16rem;" hidden>
+                    <img id="img10" src="#" class="card-img-top" alt="Sample item" height=200>
+                    <div class="card-body">
+                      <h5 id="name10" class="card-title">Item Name</h5>
+                      <p id="description10" class="card-text">Item Description</p>
+                      <a id="email10" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal5">Details</button>
+                    </div>
+                  </div>
+
+                  <div id="card11" class="card" style="width: 16rem;" hidden>
+                    <img id="img11" src="#" class="card-img-top" alt="Sample item" height=200>
+                    <div class="card-body">
+                      <h5 id="name11" class="card-title">Item Name</h5>
+                      <p id="description11" class="card-text">Item Description</p>
+                      <a id="email11" class="btn btn-outline-primary my-2 my-sm-0" href="#">Contact</a>
+                      <button type="button" class="btn btn-outline-primary px-2" data-toggle="modal" data-target="#modal5">Details</button>
                     </div>
                   </div>
                 </div>
@@ -210,5 +341,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./resources/storefront.js"></script>
   </body>
 </html>
