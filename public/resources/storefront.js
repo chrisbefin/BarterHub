@@ -32,6 +32,8 @@ var firebaseConfig = {
 // Initialize Firebase (this is standard, don't change these two lines)
 firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
+localStorage.setItem("loggedIn", false);
+
 
 if (localStorage.getItem('loggedIn') == false) {
   console.log('here');

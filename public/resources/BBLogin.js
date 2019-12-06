@@ -16,7 +16,6 @@ var firestore = firebase.firestore();
 var email = document.getElementById('email');
 var password = document.getElementById('password');
 var pullData = document.getElementById("login_button")
-localStorage.setItem("loggedIn", false);
 
 
 pullData.addEventListener("click", function(){
