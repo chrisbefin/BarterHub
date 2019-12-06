@@ -16,7 +16,7 @@ var firestore = firebase.firestore();
 
 //values from the the webpage
 
- var new_username = document.getElementById('new_username');
+ var new_username = document.getElementById('name');
  var old_password = document.getElementById('old_password');
  var new_password = document.getElementById('new_password');
  var confirm_password= document.getElementById("confirm_password");
