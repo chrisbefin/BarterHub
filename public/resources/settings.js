@@ -16,7 +16,7 @@ var firestore = firebase.firestore();
 
 //values from the the webpage
 
- var new_email = document.getElementById('new_email');
+ var new_username = document.getElementById('new_username');
  var old_password = document.getElementById('old_password');
  var new_password = document.getElementById('new_password');
  var confirm_password= document.getElementById("confirm_password");
@@ -25,15 +25,41 @@ var firestore = firebase.firestore();
 
  submit_changes.addEventListener("click", function(){
    var docUpdate = firestore.collection("users").doc("VNHuSz5sqhgDeXcusL6a");
-   docUpdate.update({
-     email: new_email.value,
-     password: confirm_password.value,
-     zipcode: new_zip.value
-   }).then(function(){
-     alert("Information has been successfully updated");
-     console.log(docUpdate);
-   }).catch(function (error){
-     alert("Could not update Information");
-     console.log('here');
-   });
+   //alert(docUpdate.getString("password"));
+   docUpdate.get().then(function(doc){
+     if(confirm_password.value != "" && new_password.value != "" && confirm_password.value == new_password.value ){
+       if(doc.get("password") == old_password.value){
+         docUpdate.update({
+           password: confirm_password.value
+         });
+         alert("Password has been successfully updated");
+       }
+       else{
+         alert("Old Password you entered is incorrect or the Fields are empty");
+       }
+     }
+     else{
+       alert("The new password does not match the ReEntered password");
+     }
+     if(new_username.value != ""){
+       docUpdate.update({
+         username: new_username.value
+       });
+       alert("Username has been successfully updated to: " + new_username.value );
+     }
+     else{
+       console.log("Username field is empty");
+     }
+     if(new_zip.value != ""){
+       docUpdate.update({
+         zipcode: new_zip.value
+       });
+       alert("Zipcode has been successfully updated to: " + new_zip.value);
+     }
+     else{
+       console.log("Zipcode field is empty");
+     }
+     }).catch(function (error){
+       alert("Could Not Update Information!!!");
+     });
  })
