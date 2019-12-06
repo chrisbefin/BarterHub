@@ -80,10 +80,10 @@ function populateSearchedItems(items) {
     document.getElementById(image).src = items[i]['image'];
     // console.log(items[i]['image']);
     if (items[i]['description'].length > 20){
-      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 20);
+      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 20) + ' ...';
     }
     else {
-      document.getElementById(description).innerHTML = items[i]['description'];
+      document.getElementById(description).innerHTML = items[i]['description'] + ' ...';
     }
     document.getElementById(name).innerHTML = items[i]['name'];
 
@@ -132,10 +132,10 @@ function helperFunction(items) {
     document.getElementById(email).href = 'MAILTO:' + items[i]['email'];
     document.getElementById(image).src = items[i]['image'];
     if (items[i]['description'].length > 20){
-      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 20);
+      document.getElementById(description).innerHTML = items[i]['description'].substring(0, 20) + ' ...';
     }
     else {
-      document.getElementById(description).innerHTML = items[i]['description'];
+      document.getElementById(description).innerHTML = items[i]['description'] + ' ...';
     }
     document.getElementById(name).innerHTML = items[i]['name'];
 
