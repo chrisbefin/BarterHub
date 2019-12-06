@@ -41,75 +41,13 @@ const userName = "name";
 const userImage = "imageUser";
 const itemDescription = "description";
 
-// this is the query for the input text so we can use it
-// const inputTextField = document.querySelector("#inputForTesting");
-// the next four are just the buttons and the text field that updates
-// whenever a change happens in our database (it is displayed on the webpage)
-// const submitButton = document.querySelector("#submitButton");
+
 const pullDataButton = document.getElementById("searchButton");
 const searchInput = $('#search').val();
-// const updateDataButton = document.querySelector("#updateDataButton");
-// const nameOutput = document.querySelector("#nameOutput");
-// const imageOutput = document.getElementById("userImage");
-
-
-// this function updates the field for a specific document
-// note we could have just used the "docRef" variable above instead of the docUpdate,
-// but I wanted to show the different ways to query the database
-// updateDataButton.addEventListener("click", function(){
-//   var docUpdate = firestore.collection("testDataCollection").doc("VNkMLN5lRwvHQdnZNz29");
-//   const inputTestString = inputTextField.value;
-//   docUpdate.update({
-//     // this is where the specific field is updated
-//     testString: inputTestString
-//   }).then(function(){
-//     console.log("That shit worked");
-//     console.log(inputTestString);
-//   }).catch(function (error){
-//     console.log("Nope. Didn't work.");
-//   });
-// })
-
-// this function deletes (if it exists) and creates a new document so use wisely
-// it will not have the same structure as the document you deleted
-// submitButton.addEventListener("click", function(){
-//   const inputTestString = inputTextField.value;
-//   docRef.set({
-//     testString: inputTestString
-//   }).then(function(){
-//     console.log("That shit worked");
-//     console.log(inputTestString);
-//   }).catch(function (error){
-//     console.log("Nope. Didn't work.");
-//   });
-// })
-
-// this function pulls data manually (you must click the pull button)
-// pullDataButton.addEventListener("click", function(){
-//   docRef.get().then(function (snapshot){
-//     if (snapshot && snapshot.exists){
-//       const myData = snapshot.data();
-//       console.log(myData[userName]);
-//     }
-//   }).catch(function (error) {
-//     console.log("Got an error");
-//   });
-// })
 
 var items = [];
 var searchedItems = []
 
-//
-// pullDataButton.addEventListener("click", function(){
-//   docRef.get().then(function (snapshot){
-//     if (snapshot && snapshot.exists){
-//       const myData = snapshot.data();
-//       console.log(myData[userName]);
-//     }
-//   }).catch(function (error) {
-//     console.log("Got an error");
-//   });
-// })
 
 pullDataButton.addEventListener("click", function(){
   // docRef.where("description", "array-contains-any", ["description", "hello"] ).onSnapshot(function (querySnapshot){
@@ -118,27 +56,10 @@ pullDataButton.addEventListener("click", function(){
       querySnapshot.forEach(function(doc) {
           searchedItems.push(doc.data());
       });
-      // nameOutput.innerText = myData[userName];
-      // imageOutput.src = myData[userImage]
-      // console.log("Current items: ", items.join(", "));
       console.log(searchedItems.length);
       populateSearchedItems(searchedItems);
   });
 })
-
-// // Working pull data function
-// pullDataButton.addEventListener("click", function(){
-//   // docRef.where("description", "array-contains-any", ["description", "hello"] ).onSnapshot(function (querySnapshot){
-//   docRef.where("description", "==", "test4" ).onSnapshot(function (querySnapshot){
-//       querySnapshot.forEach(function(doc) {
-//           searchedItems.push(doc.data());
-//       });
-//       // nameOutput.innerText = myData[userName];
-//       // imageOutput.src = myData[userImage]
-//       // console.log("Current items: ", items.join(", "));
-//       populateSearchedItems(searchedItems);
-//   });
-// })
 
 function populateSearchedItems(items) {
   var length = items.length;
@@ -191,12 +112,7 @@ getRealTimeUpdates = function(callback){
   docRef.onSnapshot(function (querySnapshot){
       querySnapshot.forEach(function(doc) {
           items.push(doc.data());
-          // console.log(doc.data())
-          // console.log(items[0]['description'])
       });
-      // nameOutput.innerText = myData[userName];
-      // imageOutput.src = myData[userImage]
-      // console.log("Current items: ", items.join(", "));
       callback(items);
   });
 }
@@ -241,7 +157,6 @@ function helperFunction(items) {
   }
 }
 
-// getRealTimeUpdates(helperFunction);
 getRealTimeUpdates(helperFunction);
 
 
@@ -249,18 +164,3 @@ getRealTimeUpdates(helperFunction);
 // we must call the function here, otherwise it won't work
 // getRealTimeUpdates();
 // helperFunction(items);
-
-
-
-// IGNORE THIS...
-// submitButton.addEventListener("click", function(){
-//   const descriptionToSave = inputTextField.value;
-//   docRef.set({
-//     description: descriptionToSave
-//   }).then(function(){
-//     console.log("That shit worked");
-//     console.log(descriptionToSave);
-//   }).catch(function (error){
-//     console.log("Nope. Didn't work.");
-//   });
-// })
