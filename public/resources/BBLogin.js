@@ -22,7 +22,7 @@ var pullData = document.getElementById("login_button")
 pullData.addEventListener("click", function(){
   const docRef = firestore.collection("users").doc(email.value);
   docRef.get().then(function(doc){
-    console.log(doc.get('password'));
+    //console.log(doc.get('password'));
     if(doc.exists){
       if (doc.get('password') == password.value){
         //isNotEmail = email.value;
