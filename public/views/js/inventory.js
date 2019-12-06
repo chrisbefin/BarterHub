@@ -33,7 +33,6 @@ function addItemToDatabase()
 
   // Other info that will be sent to the database (sold and date posted):
   var id = Math.floor(Math.random()*1000000);
-  //var currDate = firebase.firestore.Timestamp();
 
   var item_tags = [];
   if(form.foodBox.checked) { item_tags.push('food'); }
@@ -55,6 +54,7 @@ function addItemToDatabase()
       name: itemName,
       quantity: quan,
       sold: false,
+      email: isNotEmail,
       tags: item_tags
   })
   .then(function() {
@@ -65,9 +65,7 @@ function addItemToDatabase()
   });
 
   // Create the corresponding card
-  createCard('card_' + id, itemName, url, descrip, quan, tags);
-
-  // location.reload();
+  // createCard('card_' + id, itemName, url, descrip, quan, tags);
 }
 // Creates a new card on the webpage containing the new item
 function createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags)
@@ -131,7 +129,6 @@ function removeItemFromDatabase()
       console.error("Error removing document: ", error);
   });
   removeCard();
-  // location.reload(0);
 }
 
 getRealTimeUpdates = function(callback){
@@ -139,39 +136,15 @@ getRealTimeUpdates = function(callback){
     includeMetadataChanges: true
   }, function (querySnapshot){
       querySnapshot.forEach(function(doc) {
-          items[doc.id] = doc.data();
+          var info = doc.data();
+          if(info['email'] == isNotEmail)
+          {
+            items[doc.id] = doc.data();
+          }
       });
       callback(items);
-      // console.log("Counted as a metadata change!");
-      // console.log('Before if statement');
-      // console.log('PrevNum', prevNumCards);
-      // console.log('Items length', Object.keys(items).length);
-      // if(prevNumCards == 0)
-      // {
-      //   prevNumCards = Object.keys(items).length;
-      // }
-      // else if(prevNumCards != Object.keys(items).length)
-      // {
-      //   console.log('reloaded!');
-      //   prevNumCards = Object.keys(items).length;
-      //   location.reload();
-      // }
-      // console.log('After if statement');
-      // console.log('PrevNum', prevNumCards);
-      // console.log('Items length', Object.keys(items).length);
   });
 }
-
-// this function pulls data manually (you must click the pull button)
-// pullData = function(callback){
-//   docRef.get().then(function (querySnapshot){
-//     querySnapshot.forEach(function(doc) {
-//       items[doc.id] = doc.data();
-//     });
-//   }).catch(function (error) {
-//     console.log("Got an error");
-//   });
-// }
 
 function onLoad(items) {
   // TODO: Need to check for the user!
@@ -194,9 +167,6 @@ function onLoad(items) {
     var itemTags = items[itemID]['tags'];
     createCard(itemID, itemName, itemImg, itemDescrip, itemQuantity, itemTags);
   }
-  callback(secondFunction)
 }
-
-// pullData(onLoad);
 
 getRealTimeUpdates(onLoad);
