@@ -1,0 +1,37 @@
+User Acceptance Tests:
+
+Feature to Test: Account
+Test Case: Create account
+Enter all the required information for an account into the fields of the “Create Account” page, and click submit.
+User should be redirected to the main storefront page with a notification that they have successfully created an account. They should be logged-in to their account, which will be indicated in the upper-right hand corner.
+Test Case: Login
+The user should be allowed to enter information of an existing account into our username and password page (it should display whether or not there is an actually account in our database)
+Once the user presses the login with accurate information they should be transferred to our homepage giving them unique access that guests do not possess 
+
+Feature To Test: Settings
+Test Case: Modify Information
+User will be allowed to change and save account settings including password, username, location
+Once the user clicks the save button, the account settings will be sent to the Firebase database where they will be updated for that specific user. If the user does not click save and navigates to another page, the settings will not be saved
+Test Case: Delete Account
+Users should be allowed to delete their account clearing their information from our database, all the information of the specific user should not be found including all their past listings, transactions, etc.
+
+Feature to Test: Storefront
+Test Case: Search Keyword (Tag Optional)
+The user will search for a given item by keyword with tags optional. The user will see the storefront loaded with items that match that keyword sorted by date posted
+Once the user enters a keyword and presses search, a query will be sent to the database for all items that include that keyword (and possible tags) within the title or description of the item and will send back the query result to be displayed on the storefront
+Test Case: Select Item
+The user will be able to click on an item card on the storefront
+More information about the item will pop up in a modal, including the full-length description, categories, and the general location of the item.
+Test Case: Search Tag
+User will select specifics (with predetermined tags) to narrow the search conditions
+Only items with the selected tag will appear -- if multiple tags are selected, then only items with all of the selected tags will appear
+
+Feature to Test: Inventory
+Test Case: Add item to inventory
+The user will be able to click on the “add new item” button, add the desired information about their item (name, photo, description, and search tags), and then submit the info form.
+Upon clicking “add new item,” a model should appear with a form. The user should be able to enter text into the text boxes and upload an image file for their item. When they submit the info form, a new card should be generated with the information they submitted. The card should appear on the inventory screen and a new item should be added to the “inventory” table of the database.
+Test Case: Remove item from inventory
+The user will be able to click a “remove” button on the item card and confirm that they want the item deleted.
+Upon clicking the “remove” button, a modal should appear asking the user for confirmation. When the user clicks “confirm,” the card should disappear from the screen. The sold attribute in the database for this item should be set to true.
+
+
